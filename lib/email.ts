@@ -67,7 +67,7 @@ export async function sendGuestConfirmationEmail(d: BookingEmailData) {
   </table>
   <p style="font-size:15px;line-height:1.6;margin:28px 0 8px;font-family:Arial,Helvetica,sans-serif;">The address: 35 Derb Fhal Zefriti, Laksour, Medina, Marrakech. Taxis can't reach the door, so we'll guide you from the nearest street.</p>
   <p style="font-size:15px;line-height:1.6;margin:0 0 28px;font-family:Arial,Helvetica,sans-serif;">Please read <a href="${SITE}/before-you-book" style="color:${ink};">Before you book</a> and the <a href="${SITE}/booking-conditions" style="color:${ink};">booking conditions</a> if you haven't yet.</p>
-  <p style="font-size:17px;line-height:1.6;margin:0;">See you soon,<br>Jacqueline and Zahra</p>
+  <p style="font-size:17px;line-height:1.6;margin:0;">See you soon,<br>Jacqueline, Zahra and Mouad</p>
 </div></body></html>`;
   try {
     return { success: true, result: await send({ from: FROM, to: d.email, bcc: HOUSE, replyTo: HOUSE, subject: `The Douaria: your stay is confirmed (${d.bookingId})`, html }) };
