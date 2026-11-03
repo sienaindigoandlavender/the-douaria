@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* House rules: square corners, no grey text, no visible scrollbars. */
+*, *::before, *::after { border-radius: 0 !important; }
+.rounded-full { border-radius: 9999px !important; }
+
+html { scrollbar-width: none; -ms-overflow-style: none; scroll-behavior: smooth; }
+html::-webkit-scrollbar, *::-webkit-scrollbar { display: none; }
+* { scrollbar-width: none; }
+
+html { --font-display: "DM Serif Display"; --font-sans: "Manrope Variable"; }
+body { background: #FBFAF7; color: #16150F; -webkit-font-smoothing: antialiased; }
+
+::selection { background: #E3A72F; color: #16150F; }
+
+/* Underline fields, transparent (house rule). */
+input:not([type="checkbox"]):not([type="radio"]), textarea, select {
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid #16150F;
+}
+
+.kicker { font-size: 13px; letter-spacing: 0.08em; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .rise { animation: rise 1.1s cubic-bezier(.2,.7,.2,1) both; }
+  .rise-2 { animation-delay: .15s; }
+  .rise-3 { animation-delay: .3s; }
+  @keyframes rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+}
