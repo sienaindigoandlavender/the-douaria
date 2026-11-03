@@ -12,7 +12,8 @@ export default function HouseMap({ className = "h-[420px] md:h-[520px]" }: { cla
     if (!ref.current) return;
     const io = new IntersectionObserver((e) => { if (e[0].isIntersecting) { setShow(true); io.disconnect(); } }, { rootMargin: "400px" });
     io.observe(ref.current);
-    return () => io.disconnect();
+    const t = setTimeout(() => setShow(true), 2500); // background tabs never fire the observer
+    return () => { io.disconnect(); clearTimeout(t); };
   }, []);
   return (
     <div ref={ref} className={`relative w-full bg-lime ${className}`} aria-label="Map of the Douaria and Jemaa el-Fna">
