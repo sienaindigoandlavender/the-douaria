@@ -54,7 +54,7 @@ export async function sendGuestConfirmationEmail(d: BookingEmailData) {
   <p style="font-size:28px;margin:0 0 28px;letter-spacing:0.02em;">The Douaria</p>
   <p style="font-size:17px;line-height:1.6;margin:0 0 16px;">Dear ${esc(d.firstName)},</p>
   <p style="font-size:17px;line-height:1.6;margin:0 0 16px;">Your stay is confirmed. ${esc(stayName(d.room))[0].toUpperCase() + esc(stayName(d.room)).slice(1)} is yours from ${longDate(d.checkIn)}.</p>
-  <p style="font-size:17px;line-height:1.6;margin:0 0 24px;">Zahra will write to you on WhatsApp a few days before you arrive, with the way through the Medina and the door. Check-in is from 3 PM to 9 PM. Breakfast is included every morning.</p>
+  <p style="font-size:17px;line-height:1.6;margin:0 0 24px;">Zahra will write to you on WhatsApp a few days before you arrive, with the way through the Medina and the door. Check-in is from 3 PM to 9 PM. Breakfast on the roof terrace and home-cooked dinners are not included, and Zahra cooks them when you ask her the day before.</p>
   <table style="width:100%;border-collapse:collapse;font-family:Arial,Helvetica,sans-serif;">
     ${row("Booking", esc(d.bookingId))}
     ${row("Stay", esc(d.room || ""))}

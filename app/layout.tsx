@@ -22,7 +22,7 @@ export const viewport: Viewport = { themeColor: "#FBFAF7" };
 
 const jsonLd = {
   "@context": "https://schema.org",
-  "@type": "BedAndBreakfast",
+  "@type": "LodgingBusiness",
   name: "The Douaria",
   url: SITE,
   image: `${SITE}/photos/bliss-wide.webp`,

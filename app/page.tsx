@@ -41,7 +41,7 @@ export default async function Home() {
                 It sits on a quiet lane in Laksour, a few minutes on foot from Jemaa el-Fna. Step inside and the snake charmers and motorbikes give way to a courtyard, three bedrooms, a roof terrace and the call to prayer drifting over from the neighbourhood mosque.
               </p>
               <p>
-                Breakfast is cooked every morning and comes with the room. Zahra looks after the house and its guests, and answers on WhatsApp. The rest of the day is yours: go out, come back, close the door.
+                Zahra looks after the house and its guests, and answers on WhatsApp. Ask her the day before and she cooks: breakfast on the roof terrace, a Moroccan dinner at home. The rest of the day is yours: go out, come back, close the door.
               </p>
             </div>
           </div>
