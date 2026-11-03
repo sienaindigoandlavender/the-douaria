@@ -3,6 +3,8 @@ import { STAYS, stayPrice } from "@/lib/stays";
 import { getHouseTerms } from "@/lib/houseTerms";
 import { cityTaxEur } from "@/lib/cityTax";
 import BookButton from "@/components/BookButton";
+import HouseMap from "@/components/HouseMap";
+import { NEARBY } from "@/lib/places";
 
 export const revalidate = 300;
 
@@ -18,7 +20,7 @@ export default async function Home() {
         <img src="/photos/bliss-wide.webp" alt="Bliss, the long room upstairs, under its brass lantern" className="absolute inset-0 h-full w-full object-cover opacity-90" />
         <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-ink/20 to-ink/30" />
         <div className="absolute inset-x-0 bottom-0 mx-auto max-w-[1400px] px-4 pb-14 text-plaster md:px-10 md:pb-20">
-          <p className="rise kicker mb-4">35 Derb Fhal Zefriti · Marrakech Medina</p>
+          <p className="rise kicker mb-4">Five minutes on foot from Jemaa el-Fna</p>
           <h1 className="rise rise-2 max-w-4xl font-display text-[44px] leading-[1.02] md:text-[88px]">
             The roar of Jemaa el-Fna is a few minutes away. Inside, you can hear yourself think.
           </h1>
@@ -45,6 +47,31 @@ export default async function Home() {
               </p>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Proximity: the point of the house */}
+      <section id="where" className="scroll-mt-16 bg-plaster">
+        <div className="mx-auto grid max-w-[1400px] gap-10 px-4 pb-16 md:grid-cols-12 md:px-10">
+          <p className="kicker md:col-span-3">Where</p>
+          <div className="md:col-span-8">
+            <p className="font-display text-[30px] leading-[1.2] md:text-[44px]">Close to the frenzy, never in it.</p>
+            <p className="mt-4 max-w-2xl text-[17px]">35 Derb Fhal Zefriti, Laksour. Walk out of the door and the whole of the old city is at your feet: the square for the evening, the souks for the morning, the Koutoubia's minaret to find your way home.</p>
+          </div>
+        </div>
+        <div className="mx-auto max-w-[1400px] px-4 md:px-10">
+          <ul className="grid grid-cols-2 gap-x-6 gap-y-8 md:grid-cols-4">
+            {NEARBY.map((p) => (
+              <li key={p.name} className="border-t border-ink pt-4">
+                <p className="font-display text-[34px] leading-none md:text-[44px]">{p.walk.replace("about ", "").replace(" minutes", " min")}</p>
+                <p className="mt-2 text-[16px]">{p.name}, on foot</p>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="mt-14"><HouseMap /></div>
+        <div className="mx-auto max-w-[1400px] px-4 py-10 md:px-10">
+          <p className="max-w-2xl text-[15px]">Cars can't reach the door, as everywhere in the Medina. Once you've booked, Zahra sends you the way in, step by step. The airport is about 20 minutes by car; we can send a driver.</p>
         </div>
       </section>
 
@@ -117,23 +144,6 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* Where */}
-      <section className="bg-plaster">
-        <div className="mx-auto grid max-w-[1400px] gap-10 px-4 py-24 md:grid-cols-12 md:px-10 md:py-32">
-          <p className="kicker md:col-span-3">Where</p>
-          <div className="md:col-span-8">
-            <p className="font-display text-[30px] leading-[1.2] md:text-[44px]">Close to the frenzy, never in it.</p>
-            <p className="mt-4 text-[17px]">35 Derb Fhal Zefriti, Laksour, in the Medina of Marrakech.</p>
-            <ul className="mt-8 grid gap-3 text-[17px] md:grid-cols-2">
-              <li>Jemaa el-Fna: a few minutes on foot</li>
-              <li>The Koutoubia: a short walk</li>
-              <li>The souks: start at the end of the lane</li>
-              <li>Airport: about 20 minutes by car; we can send a driver</li>
-            </ul>
-            <p className="mt-8 max-w-2xl text-[16px]">Cars can't reach the door. Once you've booked, Zahra sends you the way in, step by step, with photos.</p>
-          </div>
-        </div>
-      </section>
     </>
   );
 }

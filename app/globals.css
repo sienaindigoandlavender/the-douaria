@@ -30,3 +30,12 @@ input:not([type="checkbox"]):not([type="radio"]), textarea, select {
   .rise-3 { animation-delay: .3s; }
   @keyframes rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
 }
+
+/* Map markers: true circles stay round; labels are ink on plaster. */
+.td-mark { display: flex; align-items: center; gap: 8px; pointer-events: none; }
+.td-dot { display: block; border: 2px solid #FBFAF7; box-shadow: 0 0 0 1px #16150F33; }
+.td-tag { font-family: var(--font-sans), system-ui, sans-serif; font-size: 13px; color: #16150F; background: #FBFAF7; padding: 2px 6px; white-space: nowrap; }
+.td-tag-big { font-family: var(--font-display), Georgia, serif; font-size: 17px; padding: 3px 8px; }
+.maplibregl-ctrl-group, .maplibregl-ctrl-group button { border-radius: 0 !important; }
+.maplibregl-ctrl-attrib { font-size: 11px; }
+.maplibregl-ctrl-attrib a { color: #16150F; }

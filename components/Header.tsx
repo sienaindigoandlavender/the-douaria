@@ -6,7 +6,9 @@ import { useEffect, useState } from "react";
 const LINKS = [
   { href: "/#stay", label: "Stay" },
   { href: "/#house", label: "The house" },
+  { href: "/#where", label: "Where" },
   { href: "/before-you-book", label: "Before you book" },
+  { href: "/contact", label: "Contact" },
 ];
 
 export default function Header() {
