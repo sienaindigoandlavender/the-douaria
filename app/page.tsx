@@ -20,10 +20,10 @@ export default async function Home() {
         <div className="absolute inset-x-0 bottom-0 mx-auto max-w-[1400px] px-4 pb-14 text-plaster md:px-10 md:pb-20">
           <p className="rise kicker mb-4">35 Derb Fhal Zefriti · Marrakech Medina</p>
           <h1 className="rise rise-2 max-w-4xl font-display text-[44px] leading-[1.02] md:text-[88px]">
-            A small white house, three rooms and a door that closes on the Medina.
+            The roar of Jemaa el-Fna is a few minutes away. Inside, you can hear yourself think.
           </h1>
           <div className="rise rise-3 mt-8 flex flex-wrap gap-3">
-            <Link href="#stay" className="bg-plaster px-7 py-3.5 text-[15px] text-ink hover:bg-saffron transition-colors">See the rooms</Link>
+            <Link href="#stay" className="bg-plaster px-7 py-3.5 text-[15px] text-ink hover:bg-saffron transition-colors">See the house</Link>
           </div>
         </div>
       </section>
@@ -34,14 +34,14 @@ export default async function Home() {
           <p className="kicker md:col-span-3">The house</p>
           <div className="md:col-span-8">
             <p className="font-display text-[30px] leading-[1.2] md:text-[44px]">
-              A douaria is the little house that once stood beside a big one, kept for guests and the overflow of a family. Ours has painted beams, brass lanterns and white walls that let the colours do the talking.
+              Out there, the square: drums, smoke from the grills, a thousand voices bargaining. In here, white walls, lantern light and the kind of quiet you forgot you needed.
             </p>
             <div className="mt-10 grid gap-8 text-[17px] md:grid-cols-2">
               <p>
-                It sits on a quiet lane in Laksour, a few minutes on foot from Jemaa el-Fna. Step inside and the snake charmers and motorbikes give way to a courtyard, three bedrooms, a roof terrace and the call to prayer drifting over from the neighbourhood mosque.
+                The Douaria sits on a lane in Laksour, close enough to walk to Jemaa el-Fna when the lights come on, far enough that the noise stops at the corner. Go out into the frenzy when you want it. Come back to a door that closes behind you.
               </p>
               <p>
-                Zahra looks after the house and its guests, and answers on WhatsApp. Ask her the day before and she cooks: breakfast on the roof terrace, a Moroccan dinner at home. The rest of the day is yours: go out, come back, close the door.
+                At dusk, climb to the roof terrace and listen to the call to prayer travel from minaret to minaret across the Medina. Zahra looks after the house: ask her the day before, and breakfast comes up to the roof or a Moroccan dinner is cooked at home.
               </p>
             </div>
           </div>
@@ -59,7 +59,7 @@ export default async function Home() {
       <section id="stay" className="scroll-mt-16 bg-lime">
         <div className="mx-auto max-w-[1400px] px-4 py-24 md:px-10 md:py-32">
           <p className="kicker mb-4">Stay</p>
-          <h2 className="max-w-3xl font-display text-[36px] leading-[1.1] md:text-[56px]">The whole house, for you and your people.</h2>
+          <h2 className="max-w-3xl font-display text-[36px] leading-[1.1] md:text-[56px]">A house in the Medina, yours for a few days.</h2>
 
           <article className="mt-14 grid gap-0 bg-plaster md:grid-cols-2">
             <img src="/photos/joy-wide.webp" alt="Joy, upstairs" className="aspect-[4/3] h-full w-full object-cover" />
@@ -122,7 +122,8 @@ export default async function Home() {
         <div className="mx-auto grid max-w-[1400px] gap-10 px-4 py-24 md:grid-cols-12 md:px-10 md:py-32">
           <p className="kicker md:col-span-3">Where</p>
           <div className="md:col-span-8">
-            <p className="font-display text-[30px] leading-[1.2] md:text-[44px]">35 Derb Fhal Zefriti, Laksour, in the Medina of Marrakech.</p>
+            <p className="font-display text-[30px] leading-[1.2] md:text-[44px]">Close to the frenzy, never in it.</p>
+            <p className="mt-4 text-[17px]">35 Derb Fhal Zefriti, Laksour, in the Medina of Marrakech.</p>
             <ul className="mt-8 grid gap-3 text-[17px] md:grid-cols-2">
               <li>Jemaa el-Fna: a few minutes on foot</li>
               <li>The Koutoubia: a short walk</li>
