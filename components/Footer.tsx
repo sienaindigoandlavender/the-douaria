@@ -21,7 +21,6 @@ export default function Footer() {
           <p className="mb-3">Good to know</p>
           <ul className="space-y-1.5">
             <li><Link href="/contact" className="hover:underline">Contact</Link></li>
-            <li><Link href="/before-you-book" className="hover:underline">Before you book</Link></li>
             <li><Link href="/house-rules" className="hover:underline">House rules</Link></li>
             <li><Link href="/booking-conditions" className="hover:underline">Booking conditions</Link></li>
           </ul>

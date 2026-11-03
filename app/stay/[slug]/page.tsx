@@ -93,9 +93,6 @@ export default async function StayPage({ params }: { params: { slug: string } })
               </Link>
             ))}
           </div>
-          <p className="mt-10 text-[15px]">
-            Old house, honest notes: <Link href="/before-you-book" className="underline underline-offset-4">read them before you book</Link>.
-          </p>
         </div>
       </section>
     </>

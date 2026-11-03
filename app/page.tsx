@@ -179,22 +179,6 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* Honest note */}
-      <section className="bg-plaster text-ink">
-        <div className="mx-auto grid max-w-[1400px] gap-10 px-4 py-24 md:grid-cols-12 md:px-10 md:py-36">
-          <p className="kicker uppercase md:col-span-3">Before you book</p>
-          <div className="md:col-span-9">
-            <p className="font-display text-[30px] leading-[1.2] md:text-[42px]">
-              It is an old Medina house. <em>If you come with a magnifying glass, you will find fault.</em>
-            </p>
-            <p className="mt-8 max-w-2xl text-[17px]">
-              Stairs are steep, there is no lift, not every room has a window to the street, and in the hottest weeks the walls hold on to the damp. We would rather you knew now than found out later.
-            </p>
-            <Link href="/before-you-book" className="mt-10 inline-block border-b border-ink pb-1 text-[15px] text-ink">Read the honest notes</Link>
-          </div>
-        </div>
-      </section>
-
       {/* Last word: one more photograph, one button */}
       <section className="relative flex min-h-[86svh] items-end overflow-hidden bg-ink text-plaster">
         <img src="/photos/joy-wide.webp" alt="Joy, in saffron wool" className="absolute inset-0 h-full w-full object-cover" />
