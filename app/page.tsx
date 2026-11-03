@@ -55,56 +55,49 @@ export default async function Home() {
         ))}
       </section>
 
-      {/* Ways to stay */}
+      {/* The house, as one */}
       <section id="stay" className="scroll-mt-16 bg-lime">
         <div className="mx-auto max-w-[1400px] px-4 py-24 md:px-10 md:py-32">
           <p className="kicker mb-4">Stay</p>
-          <h2 className="max-w-3xl font-display text-[36px] leading-[1.1] md:text-[56px]">Take one room, or take the whole house.</h2>
+          <h2 className="max-w-3xl font-display text-[36px] leading-[1.1] md:text-[56px]">The whole house, for you and your people.</h2>
 
-          {/* Whole house: wide */}
           <article className="mt-14 grid gap-0 bg-plaster md:grid-cols-2">
-            <Link href={`/stay/${house.slug}`} className="block overflow-hidden">
-              <img src="/photos/joy-wide.webp" alt="Joy, upstairs" className="aspect-[4/3] h-full w-full object-cover transition-transform duration-700 hover:scale-[1.03]" />
-            </Link>
+            <img src="/photos/joy-wide.webp" alt="Joy, upstairs" className="aspect-[4/3] h-full w-full object-cover" />
             <div className="flex flex-col justify-between gap-8 p-6 md:p-12">
               <div>
-                <p className="kicker">For up to six</p>
-                <h3 className="mt-2 font-display text-[36px] md:text-[44px]">{house.name}</h3>
+                <p className="kicker">Up to six guests</p>
+                <h3 className="mt-2 font-display text-[36px] md:text-[44px]">The Douaria</h3>
                 <p className="mt-4 text-[17px]">{house.line}</p>
+                <ul className="mt-6 space-y-1.5 text-[16px]">
+                  {house.facts.map((f) => <li key={f}>{f}</li>)}
+                </ul>
               </div>
               <div className="flex flex-wrap items-center gap-6">
                 <p className="text-[17px]"><span className="font-display text-[28px]">€{stayPrice(terms, house)}</span> a night</p>
                 <BookButton id={house.id} name={house.bookingName} price={stayPrice(terms, house)} maxGuests={house.maxGuests} cityTax={tax} />
-                <Link href={`/stay/${house.slug}`} className="text-[15px] underline underline-offset-4">More</Link>
               </div>
             </div>
           </article>
+          <p className="mt-6 text-[14px]">City tax (€{tax.toFixed(2)} a person a night) is added at checkout, as the city requires.</p>
 
-          {/* Rooms */}
-          <div className="mt-1 grid gap-1 md:grid-cols-3">
+          {/* The three rooms inside: described, not sold here */}
+          <h3 className="mt-24 font-display text-[30px] md:text-[40px]">The three rooms inside</h3>
+          <div className="mt-8 grid gap-1 md:grid-cols-3">
             {rooms.map((s) => (
-              <article key={s.slug} className="flex flex-col bg-plaster">
-                <Link href={`/stay/${s.slug}`} className="block overflow-hidden">
-                  <img src={s.photos[0]} alt={s.name} className="aspect-[4/5] w-full object-cover transition-transform duration-700 hover:scale-[1.03]" />
-                </Link>
-                <div className="flex flex-1 flex-col justify-between gap-6 p-6 md:p-8">
-                  <div>
-                    <div className="flex items-center gap-3">
-                      <span className="inline-block h-3 w-3 rounded-full" style={{ background: s.colour }} />
-                      <h3 className="font-display text-[32px]">{s.name}</h3>
-                    </div>
-                    <p className="mt-3 text-[16px]">{s.line}</p>
-                  </div>
-                  <div className="flex flex-wrap items-center gap-5">
-                    <p className="text-[16px]"><span className="font-display text-[24px]">€{stayPrice(terms, s)}</span> a night</p>
-                    <BookButton id={s.id} name={s.bookingName} price={stayPrice(terms, s)} maxGuests={s.maxGuests} cityTax={tax} />
-                    <Link href={`/stay/${s.slug}`} className="text-[15px] underline underline-offset-4">More</Link>
-                  </div>
+              <Link key={s.slug} href={`/stay/${s.slug}`} className="group flex flex-col bg-plaster">
+                <div className="overflow-hidden">
+                  <img src={s.photos[0]} alt={s.name} className="aspect-[4/5] w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]" />
                 </div>
-              </article>
+                <div className="p-6 md:p-8">
+                  <div className="flex items-center gap-3">
+                    <span className="inline-block h-3 w-3 rounded-full" style={{ background: s.colour }} />
+                    <span className="font-display text-[30px] group-hover:underline">{s.name}</span>
+                  </div>
+                  <p className="mt-3 text-[16px]">{s.line}</p>
+                </div>
+              </Link>
             ))}
           </div>
-          <p className="mt-6 text-[14px]">Prices include breakfast. City tax (€{tax.toFixed(2)} a person a night) is added at checkout, as the city requires.</p>
         </div>
       </section>
 

@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE),
   title: { default: "The Douaria · a small house in the Marrakech Medina", template: "%s · The Douaria" },
   description:
-    "Three rooms around a courtyard at 35 Derb Fhal Zefriti, a few minutes from Jemaa el-Fna. Book Love, Joy or Bliss, or the whole house for up to six. Breakfast included.",
+    "Three rooms around a courtyard at 35 Derb Fhal Zefriti, a few minutes from Jemaa el-Fna. The whole house for up to six: Love, Joy and Bliss, each with its own bathroom, and a roof terrace.",
   openGraph: { type: "website", siteName: "The Douaria", images: ["/photos/bliss-wide.webp"] },
 };
 

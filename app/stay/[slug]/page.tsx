@@ -20,6 +20,8 @@ export default async function StayPage({ params }: { params: { slug: string } })
   if (!s) notFound();
   const [terms, tax] = await Promise.all([getHouseTerms(), cityTaxEur()]);
   const price = stayPrice(terms, s);
+  const house = STAYS[0];
+  const isHouse = s.id === house.id;
   const others = STAYS.filter((o) => o.slug !== s.slug);
 
   return (
@@ -34,10 +36,20 @@ export default async function StayPage({ params }: { params: { slug: string } })
             </div>
             <h1 className="font-display text-[56px] leading-none md:text-[84px]">{s.name}</h1>
             <p className="text-[18px]">{s.line}</p>
-            <div className="flex flex-wrap items-center gap-6">
-              <p className="text-[17px]"><span className="font-display text-[32px]">€{price}</span> a night, breakfast included</p>
-              <BookButton id={s.id} name={s.bookingName} price={price} maxGuests={s.maxGuests} cityTax={tax} />
-            </div>
+            {isHouse ? (
+              <div className="flex flex-wrap items-center gap-6">
+                <p className="text-[17px]"><span className="font-display text-[32px]">€{price}</span> a night</p>
+                <BookButton id={s.id} name={s.bookingName} price={price} maxGuests={s.maxGuests} cityTax={tax} />
+              </div>
+            ) : (
+              <div className="space-y-5">
+                <p className="text-[17px]">{s.name} is one of the three rooms of the Douaria, let as one house for up to six.</p>
+                <div className="flex flex-wrap items-center gap-6">
+                  <p className="text-[17px]"><span className="font-display text-[32px]">€{stayPrice(terms, house)}</span> a night, the whole house</p>
+                  <BookButton id={house.id} name={house.bookingName} price={stayPrice(terms, house)} maxGuests={house.maxGuests} cityTax={tax} label="Book the house" />
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </section>
@@ -69,14 +81,13 @@ export default async function StayPage({ params }: { params: { slug: string } })
 
       <section className="bg-lime">
         <div className="mx-auto max-w-[1400px] px-4 py-20 md:px-10">
-          <p className="kicker mb-8">The other ways to stay</p>
+          <p className="kicker mb-8">{isHouse ? "The rooms inside" : "The rest of the house"}</p>
           <div className="grid gap-1 md:grid-cols-3">
             {others.map((o) => (
               <Link key={o.slug} href={`/stay/${o.slug}`} className="group block bg-plaster">
                 <img src={o.photos[0]} alt={o.name} className="aspect-[4/3] w-full object-cover" />
                 <div className="flex items-baseline justify-between p-5">
                   <span className="font-display text-[26px] group-hover:underline">{o.name}</span>
-                  <span className="text-[15px]">€{stayPrice(terms, o)}</span>
                 </div>
               </Link>
             ))}
