@@ -891,7 +891,7 @@ function BookingModalContent({
                     className="text-sm leading-relaxed text-[#0a0a0a] cursor-pointer"
                   >
                     I understand that the Douaria is a lived-in Medina house, not a
-                    hotel: no reception, no lift, steep stairs.
+                    hotel.
                   </label>
                 </div>
                 <div className="flex items-start gap-3 mt-4">
@@ -928,7 +928,7 @@ function BookingModalContent({
                     >
                       Before you book
                     </a>{" "}
-                    notes, including the windows, the damp and the stairs.
+                    notes.
                   </label>
                 </div>
                 {acknowledgmentsError && (
