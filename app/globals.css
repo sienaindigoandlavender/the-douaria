@@ -28,6 +28,8 @@ input:not([type="checkbox"]):not([type="radio"]), textarea, select {
   .rise { animation: rise 1.1s cubic-bezier(.2,.7,.2,1) both; }
   .rise-2 { animation-delay: .15s; }
   .rise-3 { animation-delay: .3s; }
+  .hero-drift { animation: drift 28s ease-in-out infinite alternate; transform-origin: 60% 40%; }
+  @keyframes drift { from { transform: scale(1.02); } to { transform: scale(1.1) translate(-1.5%, -1%); } }
   @keyframes rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
 }
 
@@ -39,3 +41,5 @@ input:not([type="checkbox"]):not([type="radio"]), textarea, select {
 .maplibregl-ctrl-group, .maplibregl-ctrl-group button { border-radius: 0 !important; }
 .maplibregl-ctrl-attrib { font-size: 11px; }
 .maplibregl-ctrl-attrib a { color: #16150F; }
+
+em { font-style: italic; }

@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import "@fontsource/dm-serif-display/400.css";
+import "@fontsource/dm-serif-display/400-italic.css";
 import "@fontsource-variable/manrope";
 import "./globals.css";
 import Header from "@/components/Header";
