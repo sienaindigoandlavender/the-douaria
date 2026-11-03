@@ -9,12 +9,11 @@ export default function Footer() {
           <p className="mt-3 text-[15px]">35 Derb Fhal Zefriti, Laksour<br />Medina, Marrakech</p>
         </div>
         <div className="text-[15px]">
-          <p className="mb-3">Stay</p>
+          <p className="mb-3">The Douaria</p>
           <ul className="space-y-1.5">
-            <li><Link href="/stay/the-whole-house" className="hover:underline">The whole house</Link></li>
-            <li><Link href="/stay/love" className="hover:underline">Love</Link></li>
-            <li><Link href="/stay/joy" className="hover:underline">Joy</Link></li>
-            <li><Link href="/stay/bliss" className="hover:underline">Bliss</Link></li>
+            <li><Link href="/the-house" className="hover:underline">The house</Link></li>
+            <li><Link href="/the-medina" className="hover:underline">The Medina</Link></li>
+            <li><Link href="/stay" className="hover:underline">Stay</Link></li>
           </ul>
         </div>
         <div className="text-[15px]">

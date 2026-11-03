@@ -19,7 +19,7 @@ export default function Page() {
         { title: "In the rooms", body: ["A double bed with a firm mattress, the Moroccan way. A bathroom inside each room, a hairdryer, luggage racks, a handmade armoire. No fridge and no desk."] },
         { title: "City tax and payment", body: ["The city charges €2.50 a person a night. When you book here it is added to your total at checkout. Stays booked here are paid in full when you book."] },
       ]}
-      related={[{ href: "/house-rules", label: "House rules" }, { href: "/booking-conditions", label: "Booking conditions" }, { href: "/#stay", label: "Back to the rooms" }]}
+      related={[{ href: "/house-rules", label: "House rules" }, { href: "/booking-conditions", label: "Booking conditions" }, { href: "/stay", label: "Back to the house" }]}
     />
   );
 }

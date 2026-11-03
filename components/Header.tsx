@@ -4,9 +4,9 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
 const LINKS = [
-  { href: "/#stay", label: "Stay" },
-  { href: "/#house", label: "The house" },
-  { href: "/#where", label: "Where" },
+  { href: "/the-house", label: "The house" },
+  { href: "/the-medina", label: "The Medina" },
+  { href: "/stay", label: "Stay" },
   { href: "/contact", label: "Contact" },
 ];
 
@@ -35,7 +35,7 @@ export default function Header() {
           {LINKS.map((l) => (
             <Link key={l.href} href={l.href} className="underline-offset-4 hover:underline">{l.label}</Link>
           ))}
-          <Link href="/#stay" className={`px-5 py-2.5 ${light ? "bg-plaster text-ink" : "bg-ink text-plaster"}`}>Book</Link>
+          <Link href="/stay" className={`px-5 py-2.5 ${light ? "bg-plaster text-ink" : "bg-ink text-plaster"}`}>Book</Link>
         </nav>
         <button className="md:hidden text-[14px]" onClick={() => setOpen((o) => !o)} aria-expanded={open}>
           {open ? "Close" : "Menu"}
@@ -46,7 +46,7 @@ export default function Header() {
           {LINKS.map((l) => (
             <Link key={l.href} href={l.href} className="font-display">{l.label}</Link>
           ))}
-          <Link href="/#stay" className="mt-2 bg-ink px-5 py-3 text-center text-[15px] text-plaster">Book</Link>
+          <Link href="/stay" className="mt-2 bg-ink px-5 py-3 text-center text-[15px] text-plaster">Book</Link>
         </nav>
       )}
     </header>
