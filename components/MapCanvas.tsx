@@ -47,8 +47,8 @@ export default function MapCanvas({ zoom = 15.6 }: { zoom?: number }) {
     const map = new maplibregl.Map({
       container: ref.current,
       style: STYLE,
-      center: [-7.9905, 31.6278],
-      zoom,
+      bounds: NEARBY.reduce((b, p) => b.extend(p.at), new maplibregl.LngLatBounds(HOUSE, HOUSE)),
+      fitBoundsOptions: { padding: { top: 60, bottom: 50, left: 40, right: 190 }, maxZoom: zoom },
       cooperativeGestures: true,
       attributionControl: { compact: true },
       dragRotate: false,
