@@ -13,6 +13,7 @@ export default function Footer() {
           <ul className="space-y-1.5">
             <li><Link href="/the-house" className="hover:underline">The house</Link></li>
             <li><Link href="/the-medina" className="hover:underline">The Medina</Link></li>
+            <li><Link href="/philosophy" className="hover:underline">Philosophy</Link></li>
             <li><Link href="/stay" className="hover:underline">Stay</Link></li>
           </ul>
         </div>
