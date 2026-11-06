@@ -9,6 +9,7 @@ import { useEffect, useState } from "react";
 const primary = [
   { href: "/the-house", label: "The House" },
   { href: "/rooms", label: "Rooms" },
+  { href: "/amenities", label: "Amenities" },
   { href: "/the-medina", label: "The Medina" },
   { href: "/philosophy", label: "Philosophy" },
 ];

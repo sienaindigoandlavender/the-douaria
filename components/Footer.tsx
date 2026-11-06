@@ -24,6 +24,7 @@ export default function Footer() {
               <ul className="space-y-1.5">
                 <li><Link href="/the-house" className={link}>The House</Link></li>
                 <li><Link href="/rooms" className={link}>Rooms</Link></li>
+                <li><Link href="/amenities" className={link}>Amenities</Link></li>
                 <li><Link href="/the-medina" className={link}>The Medina</Link></li>
                 <li><Link href="/philosophy" className={link}>Philosophy</Link></li>
               </ul>
