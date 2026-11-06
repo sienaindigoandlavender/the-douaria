@@ -97,8 +97,8 @@ export default async function RoomsPage() {
       <HouseHero
         title="Rooms"
         lede="Love, Joy and Bliss, around a small courtyard open to the sky. The house is yours, whole."
-        image="/photos/bliss-wide.webp"
-        alt="Bliss, the long room upstairs at the Douaria, under its brass lantern"
+        image="/photos/bliss-3.webp"
+        alt="Bliss, upstairs at the Douaria"
       />
 
       <section className="px-5 md:px-10 lg:px-14 pt-24 md:pt-36 pb-20 md:pb-28">

@@ -21,8 +21,8 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-limewash text-ink">
       <HouseHero
-        image="/photos/love-wide.webp"
-        alt="Love, the room off the courtyard at the Douaria, under its crystal chandelier"
+        image="/photos/bliss-wide.webp"
+        alt="Bliss, the long room upstairs at the Douaria, under its brass lantern"
         title="Welcome home."
         living
         lede="A 300-year-old house in the heart of the medina. Old walls, deep quiet, genuine care."
