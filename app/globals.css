@@ -1,45 +1,106 @@
+/* Riad di Siena's type (Jacqueline, 6 Nov 2026): Playfair for headings, EB Garamond to read, Fraunces for the house voice. */
+@import url('https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* House rules: square corners, no grey text, no visible scrollbars. */
+/* House rules: square corners, no grey text, no visible scrollbars, photos can't be dragged out. */
 *, *::before, *::after { border-radius: 0 !important; }
 .rounded-full { border-radius: 9999px !important; }
+html, body, * { scrollbar-width: none; -ms-overflow-style: none; }
+*::-webkit-scrollbar { display: none; width: 0; height: 0; }
+.scrollbar-hide { scrollbar-width: none; }
+img, video { -webkit-user-drag: none; user-select: none; -webkit-user-select: none; -webkit-touch-callout: none; }
 
-html { scrollbar-width: none; -ms-overflow-style: none; scroll-behavior: smooth; }
-html::-webkit-scrollbar, *::-webkit-scrollbar { display: none; }
-* { scrollbar-width: none; }
+:root {
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body: 'EB Garamond', Georgia, serif;
+  --font-house: 'Fraunces Variable', 'Playfair Display', Georgia, serif;
+  --lime: #F8F4EE;
+  --tadelakt: #EADFD1;
+  --bejmat: #9A5236;
+  --door: #E8D493;
+  --night: #1D1814;
+  --candle: #EDCB8C;
+  --ink: #2a2520;
+}
 
-html { --font-display: "DM Serif Display"; --font-sans: "Manrope Variable"; }
-body { background: #FBFAF7; color: #16150F; -webkit-font-smoothing: antialiased; }
+html { scroll-behavior: smooth; }
+html, body { max-width: 100vw; overflow-x: clip; background: #F8F4EE; color: #2a2520; }
+body {
+  font-family: var(--font-body);
+  font-size: 19px;
+  line-height: 1.7;
+  font-weight: 450;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 
-::selection { background: #E3A72F; color: #16150F; }
+h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 500; letter-spacing: -0.02em; text-wrap: balance; }
 
-/* Underline fields, transparent (house rule). */
+::selection { background: #2a2520; color: #F8F4EE; }
+
+/* Underline fields, transparent (house rule). Placeholders in full ink, italic. */
+input, textarea, select { font-family: var(--font-body); font-size: 1rem; }
 input:not([type="checkbox"]):not([type="radio"]), textarea, select {
   background: transparent;
   border: 0;
-  border-bottom: 1px solid #16150F;
+  border-bottom: 1px solid #2a2520;
 }
+input::placeholder, textarea::placeholder { color: #2a2520; opacity: 1; font-style: italic; }
 
-.kicker { font-size: 13px; letter-spacing: 0.08em; }
+/* Small tracked label above headings */
+.kicker { font-family: var(--font-body); font-size: 0.75rem; font-weight: 500; letter-spacing: 0.24em; }
+
+em { font-style: italic; }
+
+/* ── The house: shared shapes and type, as on riaddisiena.com ── */
+.house {
+  font-family: var(--font-house);
+  font-optical-sizing: auto;
+  font-variation-settings: "SOFT" 100, "WONK" 0;
+  letter-spacing: -0.015em;
+}
+.plaster { position: relative; overflow: hidden; isolation: isolate; }
+
+/* The one button colour: the pale yellow of the doors. */
+.btn-door {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: var(--door);
+  color: var(--ink);
+  padding: 0.95rem 1.9rem;
+  font-size: 1rem;
+  line-height: 1;
+  transition: background-color .3s ease;
+}
+.btn-door:hover { background: #F1E2AE; }
+.btn-door:focus-visible, .link-house:focus-visible { outline: 2px solid var(--bejmat); outline-offset: 4px; }
+
+/* Quiet text link: underline that thickens on hover. */
+.link-house {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.3em;
+  transition: text-decoration-thickness .2s ease, color .2s ease;
+}
+.link-house:hover { text-decoration-thickness: 2px; color: var(--bejmat); }
+.night .link-house:hover { color: var(--candle); }
 
 @media (prefers-reduced-motion: no-preference) {
   .rise { animation: rise 1.1s cubic-bezier(.2,.7,.2,1) both; }
   .rise-2 { animation-delay: .15s; }
   .rise-3 { animation-delay: .3s; }
-  .hero-drift { animation: drift 28s ease-in-out infinite alternate; transform-origin: 60% 40%; }
-  @keyframes drift { from { transform: scale(1.02); } to { transform: scale(1.1) translate(-1.5%, -1%); } }
   @keyframes rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
 }
 
-/* Map markers: true circles stay round; labels are ink on plaster. */
+/* Map markers: true circles stay round; labels are ink on lime plaster. */
 .td-mark { display: flex; align-items: center; gap: 8px; pointer-events: none; }
-.td-dot { display: block; border: 2px solid #FBFAF7; box-shadow: 0 0 0 1px #16150F33; }
-.td-tag { font-family: var(--font-sans), system-ui, sans-serif; font-size: 13px; color: #16150F; background: #FBFAF7; padding: 2px 6px; white-space: nowrap; }
-.td-tag-big { font-family: var(--font-display), Georgia, serif; font-size: 17px; padding: 3px 8px; }
+.td-dot { display: block; border: 2px solid #F8F4EE; box-shadow: 0 0 0 1px #2a252033; }
+.td-tag { font-family: var(--font-body); font-size: 14px; color: #2a2520; background: #F8F4EE; padding: 2px 6px; white-space: nowrap; }
+.td-tag-big { font-family: var(--font-house); font-size: 17px; padding: 3px 8px; }
 .maplibregl-ctrl-group, .maplibregl-ctrl-group button { border-radius: 0 !important; }
 .maplibregl-ctrl-attrib { font-size: 11px; }
-.maplibregl-ctrl-attrib a { color: #16150F; }
-
-em { font-style: italic; }
+.maplibregl-ctrl-attrib a { color: #2a2520; }

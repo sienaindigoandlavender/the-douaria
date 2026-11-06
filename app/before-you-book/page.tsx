@@ -16,7 +16,7 @@ export default function Page() {
         { title: "Room by room, or the whole house", body: ["Booked room by room, you share the courtyard and a good morning with the other guests. For the house to yourselves, book all of it."] },
         { title: "City tax and payment", body: ["The city charges €2.50 a person a night. When you book here it is added to your total at checkout. Stays booked here are paid in full when you book."] },
       ]}
-      related={[{ href: "/house-rules", label: "House rules" }, { href: "/booking-conditions", label: "Booking conditions" }, { href: "/stay", label: "Back to the house" }]}
+      related={[{ href: "/house-rules", label: "House rules" }, { href: "/booking-conditions", label: "Booking conditions" }, { href: "/rooms", label: "The rooms" }]}
     />
   );
 }

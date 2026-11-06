@@ -34,7 +34,7 @@ export default function TheMedinaPage() {
         </div>
       </section>
 
-      <NextPage href="/stay" kicker="Next" title={<>Stay, <em>the whole house</em></>} />
+      <NextPage href="/rooms" kicker="Next" title={<>The rooms, <em>or the whole house</em></>} />
     </>
   );
 }

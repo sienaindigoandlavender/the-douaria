@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from "next";
-import "@fontsource/dm-serif-display/400.css";
-import "@fontsource/dm-serif-display/400-italic.css";
-import "@fontsource-variable/manrope";
+import "@fontsource-variable/fraunces/full.css";
+import "@fontsource-variable/fraunces/full-italic.css";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -19,7 +18,7 @@ export const metadata: Metadata = {
   openGraph: { type: "website", siteName: "The Douaria", images: ["/photos/bliss-wide.webp"] },
 };
 
-export const viewport: Viewport = { themeColor: "#FBFAF7" };
+export const viewport: Viewport = { themeColor: "#F8F4EE" };
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -37,7 +36,7 @@ const jsonLd = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className="font-sans text-[16px] leading-relaxed">
+      <body suppressHydrationWarning>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
         <RefCatcher />
         <PhotoGuard />

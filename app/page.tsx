@@ -1,68 +1,102 @@
 import Link from "next/link";
-import { STAYS, stayPrice } from "@/lib/stays";
-import { getHouseTerms } from "@/lib/houseTerms";
-import { cityTaxEur } from "@/lib/cityTax";
-import BookButton from "@/components/BookButton";
+import HouseHero from "@/components/house/HouseHero";
+import Walk from "@/components/house/Walk";
+import QuoteCarousel from "@/components/QuoteCarousel";
+import { REVIEWS } from "@/lib/reviews";
 
 export const revalidate = 300;
 
-// Peaceful, not loud, and not one long scroll (Jacqueline, 3 Nov 2026): the home page is a
-// photograph, one breath of words and three doors (The house, The Medina, Stay). No room
-// showcase, no figures. Italics in ink; white plaster and ink.
+// Riad di Siena's home page, duplicated for the Douaria (Jacqueline, 6 Nov 2026: "the new site lost its soul,
+// keep the riad's warmth; only the rooms and the hero photo change"). The walk: the photo and the welcome,
+// dyafa, the three rooms, guests' words, an honest note. No dinners or beyond-the-walls (those are the riad's).
 
-export default async function Home() {
-  const [terms, tax] = await Promise.all([getHouseTerms(), cityTaxEur()]);
-  const house = STAYS[0];
-  const price = stayPrice(terms, house);
+const ROOMS = [
+  { href: "/rooms#love", image: "/photos/love.webp", title: "Love", sub: "Ground floor, off the courtyard" },
+  { href: "/rooms#joy", image: "/photos/joy.webp", title: "Joy", sub: "First floor, saffron yellow" },
+  { href: "/rooms#bliss", image: "/photos/bliss.webp", title: "Bliss", sub: "First floor, under the lantern" },
+  { href: "/rooms#the-whole-house", image: "/photos/bliss-wide.webp", title: "The whole house", sub: "Up to six, nobody but your own people" },
+];
 
+export default function Home() {
   return (
-    <>
-      {/* Hero: one photograph, the promise, one button */}
-      <section className="relative h-[100svh] min-h-[620px] w-full overflow-hidden bg-ink text-plaster">
-        <img src="/photos/bliss-wide.webp" alt="Bliss, the long room upstairs, under its brass lantern" className="absolute inset-0 h-full w-full object-cover" />
-        <div className="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/25 to-ink/35" />
-        <div className="absolute inset-x-0 bottom-0 mx-auto max-w-[1400px] px-4 pb-8 md:px-10 md:pb-10">
-          <p className="rise kicker mb-5 uppercase">No. 35 · Laksour · Marrakech</p>
-          <h1 className="rise rise-2 max-w-4xl font-display text-[44px] leading-[1.04] md:text-[80px]">
-            Close the door. <em>The Medina waits outside.</em>
-          </h1>
-          <div className="rise rise-3 mt-10">
-            <BookButton
-              id={house.id}
-              name={house.bookingName}
-              price={price}
-              maxGuests={house.maxGuests}
-              cityTax={tax}
-              className="bg-plaster px-7 py-3.5 text-[15px] text-ink hover:bg-lime transition-colors"
-            />
+    <div className="min-h-screen bg-limewash text-ink">
+      <HouseHero
+        image="/photos/love-wide.webp"
+        alt="Love, the room off the courtyard at the Douaria, under its crystal chandelier"
+        title="Welcome home."
+        living
+        lede="A 300-year-old house in the heart of the medina. Old walls, deep quiet, genuine care."
+      />
+
+      {/* DYAFA: the one thing that makes us different. */}
+      <section className="relative overflow-hidden px-5 md:px-10 lg:px-14 py-28 md:py-44">
+        <span
+          aria-hidden="true"
+          dir="rtl"
+          className="pointer-events-none select-none absolute -right-[6vw] top-10 md:top-16 leading-none text-bejmat/[0.07]"
+          style={{ fontFamily: "'Amiri', serif", fontSize: "clamp(10rem, 34vw, 34rem)" }}
+        >
+          ضيافة
+        </span>
+        <div className="relative mx-auto max-w-[1500px] grid md:grid-cols-12 gap-y-14">
+          <h2 className="house md:col-span-10 lg:col-span-9 font-light text-[clamp(2.2rem,5.4vw,5.4rem)] leading-[1.02] tracking-[-0.03em]">
+            There is an old Arabic word for the way a guest is received:{" "}
+            <span className="whitespace-nowrap">dyafa.</span>
+          </h2>
+          <img src="/drawings/breakfast.svg" alt="" aria-hidden draggable={false} className="md:col-span-5 md:row-start-2 self-center w-full max-w-[460px] -ms-2 select-none" />
+          <div className="md:col-span-6 md:col-start-6 lg:col-span-5 lg:col-start-7 md:row-start-2">
+            <p className="text-[1.2rem] md:text-[1.3rem] leading-[1.75] text-ink">
+              Born in the desert, where taking in a weary traveler was a sacred duty, it lives on in Moroccan
+              life as a point of honor. When you cross our threshold you are not a customer to be attended to,
+              but a guest to be cared for: met with a hot glass of tea, a room prepared with devotion, and the
+              ease of knowing you are held by a house that takes real pride in your comfort.
+            </p>
+            <Link href="/philosophy" className="link-house inline-block mt-8 text-lg">
+              Our philosophy
+            </Link>
           </div>
         </div>
       </section>
 
-      {/* One breath of words, then three doors */}
-      <section className="bg-plaster">
-        <div className="mx-auto max-w-[1400px] px-4 py-24 md:px-10 md:py-36">
-          <p className="max-w-4xl font-display text-[30px] leading-[1.2] md:text-[46px]">
-            Out there: drums, smoke from the grills, a thousand voices bargaining. <em>In here, the quiet you forgot you needed.</em>
-          </p>
-          <nav className="mt-20 grid border-t border-ink md:mt-28 md:grid-cols-3">
-            {[
-              { href: "/the-house", kicker: "The house", title: <>A door that <em>closes behind you</em></> },
-              { href: "/the-medina", kicker: "The Medina", title: <>Five minutes <em>from the square</em></> },
-              { href: "/stay", kicker: "Stay", title: <>The whole house, <em>yours</em></> },
-            ].map((d) => (
-              <Link key={d.href} href={d.href} className="group flex items-end justify-between gap-4 border-b border-ink py-8 md:border-b-0 md:border-e md:px-8 md:py-12 md:first:ps-0 md:last:border-e-0">
-                <span>
-                  <span className="kicker block uppercase">{d.kicker}</span>
-                  <span className="mt-3 block font-display text-[28px] leading-[1.1] md:text-[34px]">{d.title}</span>
-                </span>
-                <span className="text-[22px] transition-transform group-hover:translate-x-1">&rarr;</span>
-              </Link>
-            ))}
-          </nav>
+      {/* THE ROOMS: Love, Joy, Bliss, or the whole house. */}
+      <section className="night bg-bejmat text-limewash pt-28 md:pt-40 pb-24 md:pb-32">
+        <div className="mx-auto max-w-[1500px] px-5 md:px-10 lg:px-14 mb-12 md:mb-16 flex flex-wrap items-end justify-between gap-6">
+          <h2 className="house font-light text-limewash text-[clamp(2.1rem,4.6vw,4.4rem)] leading-[1.02] tracking-[-0.03em] max-w-[16ch]">
+            Three rooms around a courtyard
+          </h2>
+          <Link href="/rooms" className="link-house text-lg text-limewash">
+            See the rooms
+          </Link>
+        </div>
+        <Walk items={ROOMS} tone="clay" />
+      </section>
+
+      {/* GUEST VOICES: one at a time, stepped by hand. */}
+      <section className="bg-tadelakt px-5 md:px-10 lg:px-14 py-28 md:py-40">
+        <div className="mx-auto max-w-[1500px]">
+          <QuoteCarousel testimonials={REVIEWS.map((r) => ({ Quote: r.text, Guest_Name: r.name }))} />
         </div>
       </section>
 
-    </>
+      {/* A NOTE BEFORE YOU BOOK: honesty as disclosure, low and quiet. */}
+      <section className="bg-straw px-5 md:px-10 lg:px-14 py-24 md:py-32">
+        <div className="mx-auto max-w-[1500px] grid md:grid-cols-12 gap-8">
+          <h2 className="house md:col-span-4 font-normal text-2xl leading-snug">
+            A house with three centuries in its walls.
+          </h2>
+          <div className="md:col-span-6 md:col-start-6">
+            <p className="text-[1.1rem] leading-relaxed text-ink">
+              Come as you would come to a home: for the quiet, the courtyard open to the sky, the roof terrace in
+              the evening. The plaster is soft with age, the stairs are steep and some rooms have no outside window,
+              the old way these houses keep cool. The house is lived-in, and held by the people who look after it.
+              You will feel it the moment you cross the threshold.
+            </p>
+            <Link href="/before-you-book" className="link-house inline-block mt-6 text-base">
+              Read before you book
+            </Link>
+          </div>
+        </div>
+      </section>
+    </div>
   );
 }
