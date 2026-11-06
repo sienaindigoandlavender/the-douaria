@@ -10,7 +10,8 @@ const OSM = `https://www.openstreetmap.org/export/embed.html?bbox=${LNG - D}%2C$
 const GMAPS = `https://www.google.com/maps/search/?api=1&query=${LAT}%2C${LNG}`;
 
 export const metadata: Metadata = {
-  title: "Riad di Siena II",
+  title: { absolute: "Riad di Siena II · 35 Derb Fhal Zefriti, Marrakech" },
+  alternates: { canonical: "https://ii.riaddisiena.com/" },
   description: `Riad di Siena II, ${ADDRESS}. Three rooms around a courtyard, two minutes from Jemaa el-Fna.`,
 };
 
@@ -23,7 +24,7 @@ export default function RiadDiSienaII() {
     geo: { "@type": "GeoCoordinates", latitude: LAT, longitude: LNG },
   };
   return (
-    <section className="bg-plaster">
+    <main className="fixed inset-0 z-[1000] overflow-y-auto bg-plaster text-ink">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(ld) }} />
       <div className="mx-auto max-w-3xl px-4 py-24 md:px-10 md:py-32">
         <h1 className="font-display text-[44px] leading-[1.05] md:text-[64px]">Riad di Siena II</h1>
@@ -45,6 +46,6 @@ export default function RiadDiSienaII() {
           <p>The welcome stays the same. Breakfast is made each morning by Zahra, who runs the house, with bread baked in the house and homemade jams.</p>
         </div>
       </div>
-    </section>
+    </main>
   );
 }
