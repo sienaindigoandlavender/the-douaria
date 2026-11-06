@@ -9,6 +9,10 @@ module.exports = {
   async redirects() {
     return [
       { source: "/stay", destination: "/rooms", permanent: false },
+      // Old riaddisiena.com paths someone might type on ii.riaddisiena.com land on the Douaria's own pages.
+      { source: "/the-douaria", destination: "/", permanent: false },
+      { source: "/the-house-rules", destination: "/house-rules", permanent: false },
+      { source: "/the-riad", destination: "/the-house", permanent: false },
       { source: "/stay/:slug", destination: "/rooms#:slug", permanent: false },
     ];
   },
