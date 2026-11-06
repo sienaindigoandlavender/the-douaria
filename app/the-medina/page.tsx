@@ -25,7 +25,12 @@ export default function TheMedinaPage() {
         </div>
         <HouseMap />
         <div className="mx-auto max-w-[1400px] px-4 py-10 md:px-10">
-          <p className="max-w-2xl text-[15px]">Cars can&apos;t reach the door, as everywhere in the Medina. Once you&apos;ve booked, Zahra sends you the way in, step by step. The airport is about 20 minutes by car; we can send a driver.</p>
+          <p className="max-w-2xl font-display text-[24px] leading-snug md:text-[28px]">35 Derb Fhal Zefriti, Laksour, Medina, 40000 Marrakech, Morocco</p>
+          <p className="mt-3 text-[15px]">
+            31.6272937, -7.9915523 ·{" "}
+            <a href="https://www.google.com/maps/search/?api=1&query=31.6272937%2C-7.9915523" className="underline underline-offset-4">Open in Google Maps</a>
+          </p>
+          <p className="mt-8 max-w-2xl text-[15px]">Cars can&apos;t reach the door, as everywhere in the Medina. Once you&apos;ve booked, Zahra sends you the way in, step by step. The airport is about 20 minutes by car; we can send a driver.</p>
         </div>
       </section>
 
