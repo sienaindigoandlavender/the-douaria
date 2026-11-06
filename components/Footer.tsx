@@ -26,6 +26,9 @@ export default function Footer() {
                 <li><Link href="/rooms" className={link}>Rooms</Link></li>
                 <li><Link href="/amenities" className={link}>Amenities</Link></li>
                 <li><Link href="/the-medina" className={link}>The Medina</Link></li>
+                <li><Link href="/dinners" className={link}>Dinners</Link></li>
+                <li><Link href="/sahara" className={link}>The Sahara</Link></li>
+                <li><Link href="/day-trips" className={link}>Day Trips</Link></li>
                 <li><Link href="/philosophy" className={link}>Philosophy</Link></li>
               </ul>
             </div>
