@@ -21,12 +21,13 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-limewash text-ink">
       <HouseHero
-        image="/photos/bliss-wide.webp"
-        alt="Bliss, the long room upstairs at the Douaria, under its brass lantern"
+        alt=""
         title="Welcome home."
-        living
         lede="A 300-year-old house in the heart of the medina. Old walls, deep quiet, genuine care."
-      />
+      >
+        {/* No hero photo until the new one is taken (Jacqueline, 6 Nov 2026): the tea drawing instead. */}
+        <img src="/drawings/breakfast.svg" alt="" aria-hidden draggable={false} className="w-full max-w-[320px] -ms-2 select-none" />
+      </HouseHero>
 
       {/* DYAFA: the one thing that makes us different. */}
       <section className="relative overflow-hidden px-5 md:px-10 lg:px-14 py-28 md:py-44">
@@ -43,7 +44,7 @@ export default function Home() {
             There is an old Arabic word for the way a guest is received:{" "}
             <span className="whitespace-nowrap">dyafa.</span>
           </h2>
-          <img src="/drawings/breakfast.svg" alt="" aria-hidden draggable={false} className="md:col-span-5 md:row-start-2 self-center w-full max-w-[460px] -ms-2 select-none" />
+          <img src="/drawings/jams.svg" alt="" aria-hidden draggable={false} className="md:col-span-5 md:row-start-2 self-center w-full max-w-[460px] -ms-2 select-none" />
           <div className="md:col-span-6 md:col-start-6 lg:col-span-5 lg:col-start-7 md:row-start-2">
             <p className="text-[1.2rem] md:text-[1.3rem] leading-[1.75] text-ink">
               Born in the desert, where taking in a weary traveler was a sacred duty, it lives on in Moroccan
