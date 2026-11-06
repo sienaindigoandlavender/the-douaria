@@ -59,8 +59,8 @@ export default function AmenitiesPage() {
       <HouseHero
         title="Amenities"
         lede="Everything a good night needs, and nothing it doesn't."
-        image="/photos/joy-wide.webp"
-        alt="Joy, the saffron room upstairs at the Douaria"
+        image="/photos/bliss-3.webp"
+        alt="Bliss, upstairs at the Douaria"
       />
       <Block title="In the house" items={IN_THE_HOUSE} bg="bg-limewash" />
       <Block title="On request" items={ON_REQUEST} bg="bg-tadelakt" />

@@ -25,7 +25,7 @@ export const STAYS: Stay[] = [
     name: "The whole house",
     line: "Three bedrooms, three bathrooms, a roof terrace, and nobody but your own people.",
     colour: "#25348C",
-    photos: ["/photos/bliss-wide.webp", "/photos/love-wide.webp", "/photos/joy-wide.webp", "/photos/detail-niche.webp"],
+    photos: ["/photos/bliss-wide.webp", "/photos/love-wide.webp", "/photos/detail-niche.webp", "/photos/bliss-3.webp"],
     story: [
       "Close the door at No. 35 and the Medina is on the other side of it. Mornings start slowly, with breakfast on the roof terrace if you've asked for it. Afternoons, someone comes back from the souks with the carpet they swore they wouldn't buy. Evenings, you walk to the square for the smoke and the drums, and walk home to quiet.",
       "For two couples and a friend, a family with older children, or friends who want to travel together and still each have a door to close.",
@@ -55,7 +55,7 @@ export const STAYS: Stay[] = [
     name: "Joy",
     line: "First floor. Saffron yellow, bright prints, and a shower that means business.",
     colour: "#E3A72F",
-    photos: ["/photos/joy.webp", "/photos/joy-2.webp", "/photos/joy-wide.webp", "/photos/joy-art.webp"],
+    photos: ["/photos/joy.webp", "/photos/joy-2.webp", "/photos/joy-art.webp"],
     story: [
       "Joy wears saffron: a yellow wool blanket the colour of the spice stalls, striped cushions, small bright prints on a white wall. It is the simplest of the three rooms and the kindest on the budget.",
       "And the shower: the water comes down hard and hot, which in an old Medina house is no small thing.",

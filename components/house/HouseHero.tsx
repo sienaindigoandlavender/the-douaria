@@ -27,16 +27,17 @@ export default function HouseHero({
   living?: boolean;
   children?: ReactNode;
 }) {
-  const dark = (!!image && !light) || (tone === "night" && !light);
+  const dark = !!image || tone === "night";
   return (
     <section
       className={`relative overflow-hidden min-h-[100svh] ${dark ? "night bg-night text-limewash" : "bg-limewash text-ink"}`}
     >
       {image && (
         <>
-          <img src={image} alt={alt} className={`absolute inset-0 h-full w-full object-cover ${light ? "object-[18%_50%]" : ""}`} fetchPriority="high" />
+          {/* Whole photo, never cropped (Jacqueline, 6 Nov 2026): fitted inside the frame, centred both ways, on night. */}
+          <img src={image} alt={alt} className="absolute inset-x-0 top-[72px] bottom-0 h-[calc(100%-72px)] w-full object-contain object-center" fetchPriority="high" />
           {living && !light && <HeroTint />}
-          <div className={`absolute inset-0 ${light ? "bg-gradient-to-t md:bg-gradient-to-l from-limewash/90 via-limewash/30 to-transparent" : "bg-gradient-to-t from-night/80 via-night/20 to-night/10"}`} />
+          <div className="absolute inset-0 bg-gradient-to-t from-night/80 via-night/10 to-transparent" />
         </>
       )}
       <div className={`relative mx-auto max-w-[1500px] min-h-[100svh] px-5 md:px-10 lg:px-14 pt-28 pb-[max(3rem,8svh)] flex flex-col justify-end ${light ? "md:items-end md:text-right" : ""}`}>
