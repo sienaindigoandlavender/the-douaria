@@ -48,8 +48,7 @@ export default function AgafayPage() {
               } md:bg-transparent ${i === 2 ? "text-limewash" : "text-ink"}`}
             >
               <Sky stage={i} />
-              <p className={`mt-8 text-[13px] tracking-[0.18em] uppercase`}>0{i + 1}</p>
-              <h2 className="mt-3 house italic font-light text-[clamp(2.4rem,4vw,3.8rem)] leading-[1] tracking-[-0.02em]">{m.when}</h2>
+              <h2 className="mt-8 house italic font-light text-[clamp(2.4rem,4vw,3.8rem)] leading-[1] tracking-[-0.02em]">{m.when}</h2>
               <p className="mt-6 text-[1.15rem] md:text-[1.2rem] leading-[1.7] max-w-sm">{m.what}</p>
             </li>
           ))}

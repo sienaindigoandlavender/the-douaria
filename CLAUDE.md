@@ -15,4 +15,5 @@ Jacqueline's house at 35 Derb Fhal Zefriti (owned by her). Its own site, not lin
 - Forms: single underline fields, transparent.
 - Dates with the house calendar (`components/DatePicker.tsx`), never a browser date input.
 - No visible scrollbars.
+- No decorative 01/02/03 numbering: numbers only where order is real (steps, days, ranked lists). Jacqueline, 9 Nov 2026.
 - Photos can't be saved (`PhotoGuard`); no pins until a /pin-image route exists.
