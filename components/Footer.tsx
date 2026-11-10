@@ -49,7 +49,14 @@ export default function Footer() {
             <Link href="/booking-conditions" className="hover:text-bejmat">Booking conditions</Link>
             <Link href="/house-rules" className="hover:text-bejmat">House rules</Link>
           </div>
-          <span>© {new Date().getFullYear()} The Douaria</span>
+          <div className="flex items-center gap-4">
+            <span>© {new Date().getFullYear()} The Douaria</span>
+            {/* Jacqueline's secret door (10 Nov 2026): first dot = No. 37 directions, second = No. 35, on the neutral guest site. */}
+            <span className="flex items-center gap-2 mr-16">
+              <a href="https://www.indigoandlavender.love/the-riad/directions" className="w-2.5 h-2.5 rounded-full bg-ink/20 hover:bg-ink/40 transition-colors" aria-label="Directions to No. 37" />
+              <a href="https://www.indigoandlavender.love/the-douaria/directions" className="w-2.5 h-2.5 rounded-full bg-ink/20 hover:bg-ink/40 transition-colors" aria-label="Directions to No. 35" />
+            </span>
+          </div>
         </div>
       </div>
     </footer>
