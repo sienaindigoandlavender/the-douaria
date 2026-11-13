@@ -4,7 +4,7 @@ module.exports = {
   // The rooms moved to /rooms with the riad design (6 Nov 2026).
   // News is handed out by hand (Tripadvisor), never indexed.
   async headers() {
-    return [{ source: "/news/:path*", headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow" }] }, { source: "/news", headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow" }] }];
+    return [{ source: "/listing/:path*", headers: [{ key: "Access-Control-Allow-Origin", value: "*" }, { key: "X-Robots-Tag", value: "noindex" }] }, { source: "/news/:path*", headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow" }] }, { source: "/news", headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow" }] }];
   },
   async redirects() {
     return [
