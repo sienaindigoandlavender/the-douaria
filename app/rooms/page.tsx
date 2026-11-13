@@ -24,7 +24,7 @@ const icon = (f: string) => {
   if (/breakfast|dinner/.test(l)) return <IconBreakfast size={20} />;
   if (/stair|floor/.test(l)) return <IconStairs size={20} />;
   if (/terrace/.test(l)) return <IconTerrace size={20} />;
-  if (/guest|children/.test(l)) return <IconBed size={20} />;
+  if (/guest|children|\bbeds?\b/.test(l)) return <IconBed size={20} />;
   if (/bliss|love|joy/.test(l)) return <IconRoom size={20} />;
   return null;
 };
