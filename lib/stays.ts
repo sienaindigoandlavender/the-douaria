@@ -30,7 +30,7 @@ export const STAYS: Stay[] = [
       "Close the door at No. 35 and the Medina is on the other side of it. Mornings start slowly, with breakfast on the roof terrace if you've asked for it. Afternoons, someone comes back from the souks with the carpet they swore they wouldn't buy. Evenings, you walk to the square for the smoke and the drums, and walk home to quiet.",
       "For two couples and a friend, a family with older children, or friends who want to travel together and still each have a door to close.",
     ],
-    facts: ["Up to 6 guests", "Love, Joy and Bliss, each with its own bathroom", "Roof terrace", "Breakfast on the roof terrace and home-cooked dinners, on request", "Children from 8 years"],
+    facts: ["Up to 6 guests", "Two king beds (Love, Bliss) and a queen (Joy)", "Love, Joy and Bliss, each with its own bathroom", "Roof terrace", "Breakfast on the roof terrace and home-cooked dinners, on request", "Children from 8 years"],
     maxGuests: 6,
   },
   {
@@ -45,7 +45,7 @@ export const STAYS: Stay[] = [
       "Love is the room you reach first, just off the courtyard. A red Amazigh blanket across a wide white bed, a crystal chandelier that has no business in a Medina house and looks perfectly at home, and one of Rhonda's big paintings keeping watch over the bed.",
       "It is the first door you reach when your feet have walked the Medina all day: no stairs, just the bed.",
     ],
-    facts: ["2 guests", "Ground floor", "Bathroom inside the room", "Air conditioning that also heats", "Breakfast on request"],
+    facts: ["2 guests", "King bed, 160 cm", "Ground floor", "Bathroom inside the room", "Air conditioning that also heats", "Breakfast on request"],
     maxGuests: 2,
   },
   {
@@ -60,7 +60,7 @@ export const STAYS: Stay[] = [
       "Joy wears saffron: a yellow wool blanket the colour of the spice stalls, striped cushions, small bright prints on a white wall. It is the simplest of the three rooms and the kindest on the budget.",
       "And the shower: the water comes down hard and hot, which in an old Medina house is no small thing.",
     ],
-    facts: ["2 guests", "First floor, up a steep stair", "Bathroom inside the room", "Air conditioning that also heats", "Breakfast on request"],
+    facts: ["2 guests", "Queen bed", "First floor, up a steep stair", "Bathroom inside the room", "Air conditioning that also heats", "Breakfast on request"],
     maxGuests: 2,
   },
   {
@@ -75,7 +75,7 @@ export const STAYS: Stay[] = [
       "Bliss is the long room: painted beams overhead, a pierced brass lantern that throws its pattern on the ceiling at night, and a wide bed under a grey wool blanket with a long hand-knotted fringe.",
       "Above the bed hangs the house's most talked-about painting, a figure wrapped in cobalt blue. You will either love it or ask to sleep facing the other way.",
     ],
-    facts: ["2 guests", "First floor, up a steep stair", "Bathroom inside the room", "Air conditioning that also heats", "Breakfast on request"],
+    facts: ["2 guests", "King bed, 160 cm", "First floor, up a steep stair", "Bathroom inside the room", "Air conditioning that also heats", "Breakfast on request"],
     maxGuests: 2,
   },
 ];
