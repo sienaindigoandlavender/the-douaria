@@ -33,14 +33,14 @@ export async function GET(request: NextRequest) {
 
   try {
     // 1 & 2. Look up the OTA feed URLs (both tables, by name, plus settings rows
-    // airbnb_ical:<room> / booking_ical:<room> kept by ops) for this room and every
+    // airbnb_ical:<room> / booking_ical:<room> / vrbo_ical:<room> kept by ops) for this room and every
     // room it shares nights with (The Douaria: whole house ↔ Bliss, Joy, Love).
     if (room) {
       const names = related(room);
       const [riadRes, douariaRes, extraRes] = await Promise.all([
         supabase.from("rooms").select("name, ical_url, ical_url_airbnb").in("name", names),
         supabase.from("douaria_rooms").select("name, ical_url, ical_url_airbnb").in("name", names),
-        supabase.from("settings").select("key, value").in("key", names.flatMap((n) => [`airbnb_ical:${n}`, `booking_ical:${n}`])),
+        supabase.from("settings").select("key, value").in("key", names.flatMap((n) => [`airbnb_ical:${n}`, `booking_ical:${n}`, `vrbo_ical:${n}`])),
       ]);
 
       // A neighbour's Airbnb "Not available" blocks are echoes of what that listing imports
