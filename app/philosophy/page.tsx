@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import HouseHero from "@/components/house/HouseHero";
+import { getSections } from "@/lib/data";
+
+export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: "Philosophy",
@@ -9,14 +12,17 @@ export const metadata: Metadata = {
 
 // Same structure as the riad's philosophy page (hero, big intro, straw, tadelakt, night, closing quote), the
 // Douaria's own words (Jacqueline, 14 Nov 2026: "the Douaria site does not have the same soul").
-export default function PhilosophyPage() {
+export default async function PhilosophyPage() {
+  // The banner is the riad's philosophy background (same row in the shared Supabase), not a picture of the Douaria.
+  const content = await getSections("philosophy").catch(() => ({} as Record<string, any>));
+  const heroImage = content.hero?.Image_URL || "/photos/detail-niche.webp";
   return (
     <div className="bg-limewash text-ink min-h-screen">
       <HouseHero
         title="Philosophy"
         lede="Dyafa is the old Moroccan word for receiving someone under your roof. It still runs this house."
-        image="/photos/detail-niche.webp"
-        alt="A niche in the plaster wall at No. 35"
+        image={heroImage}
+        alt="Dyafa, the old Moroccan way of receiving a guest"
       />
 
       <section className="px-5 md:px-10 lg:px-14 py-24 md:py-40">
