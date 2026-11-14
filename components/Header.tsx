@@ -8,13 +8,13 @@ import { useEffect, useState } from "react";
 // name on the left, "Stay with us" on the right, the full-screen menu that unrolls from the top.
 const primary = [
   { href: "/the-house", label: "The House" },
+  { href: "/philosophy", label: "Philosophy" },
   { href: "/rooms", label: "Rooms" },
   { href: "/amenities", label: "Amenities" },
   { href: "/the-medina", label: "The Medina" },
   { href: "/dinners", label: "Dinners" },
   { href: "/sahara", label: "The Sahara" },
   { href: "/day-trips", label: "Day Trips" },
-  { href: "/philosophy", label: "Philosophy" },
 ];
 const secondary = [
   { href: "/contact", label: "Contact" },
