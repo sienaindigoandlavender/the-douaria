@@ -15,6 +15,7 @@ const primary = [
   { href: "/dinners", label: "Dinners" },
   { href: "/sahara", label: "The Sahara" },
   { href: "/day-trips", label: "Day Trips" },
+  { href: "https://www.slowmorocco.com", label: "Morocco" },
 ];
 const secondary = [
   { href: "/contact", label: "Contact" },

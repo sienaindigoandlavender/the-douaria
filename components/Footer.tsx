@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-// Riad di Siena's three-level footer, in its warm sand tones (Jacqueline, 6 Nov 2026). No link to any other brand.
+// Riad di Siena's three-level footer, in its warm sand tones (Jacqueline, 6 Nov 2026). Other-brand links only in EXPERIENCE (Morocco → Slow Morocco) and LEARN (Derb, Darija, Amazigh, Tsawer): Jacqueline, 14 Nov 2026.
 const link = "text-ink text-sm hover:text-bejmat transition-colors";
 
 export default function Footer() {
@@ -8,7 +8,7 @@ export default function Footer() {
     <footer className="text-ink">
       <div className="bg-[#e8e0d4]">
         <div className="max-w-7xl mx-auto px-6 py-10">
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-6 gap-8">
             <div className="col-span-2 md:col-span-2">
               <span className="flex flex-col items-start leading-tight mb-3">
                 <span className="text-sm tracking-[0.3em] font-light">THE</span>
@@ -35,6 +35,16 @@ export default function Footer() {
                 <li><Link href="/dinners" className={link}>Dinners</Link></li>
                 <li><Link href="/sahara" className={link}>The Sahara</Link></li>
                 <li><Link href="/day-trips" className={link}>Day Trips</Link></li>
+                <li><a href="https://www.slowmorocco.com" className={link}>Morocco</a></li>
+              </ul>
+            </div>
+            <div>
+              <span className="text-xs tracking-widest mb-4 block">LEARN</span>
+              <ul className="space-y-1.5">
+                <li><a href="https://derb.so" className={link}>Derb.so</a></li>
+                <li><a href="https://darija.io" className={link}>Darija.io</a></li>
+                <li><a href="https://www.amazigh.online" className={link}>Amazigh.online</a></li>
+                <li><a href="https://www.tsawer.org/" className={link}>Tsawer</a></li>
               </ul>
             </div>
             <div>
