@@ -9,8 +9,8 @@ import { useEffect, useState } from "react";
 const primary = [
   { href: "/the-house", label: "The House" },
   { href: "/philosophy", label: "Philosophy" },
-  { href: "/rooms", label: "Rooms" },
   { href: "/amenities", label: "Amenities" },
+  { href: "/rooms", label: "Rooms" },
   { href: "/the-medina", label: "The Medina" },
   { href: "/dinners", label: "Dinners" },
   { href: "/sahara", label: "The Sahara" },
