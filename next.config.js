@@ -13,7 +13,8 @@ module.exports = {
     const paths = ["/welcome", "/arrival", "/keys", "/the-riad/:path+", "/the-douaria/:path+", "/il-static/:path*",
       "/api/arrival", "/api/passport", "/api/tax", "/api/tax/:path*", "/api/transfer", "/api/img", "/api/enter", "/api/sheets/:path*"];
     return {
-      beforeFiles: paths.map((source) => ({ source, destination: `${IL}${source}` })),
+      // Pages get ?via=ii so the neutral site shows the Douaria footer (Booking guests); APIs and assets go as they are.
+      beforeFiles: paths.map((source) => ({ source, destination: `${IL}${source}${/^\/(api|il-static)/.test(source) ? "" : "?via=ii"}` })),
       fallback: [{ source: "/drawings/:path*", destination: `${IL}/drawings/:path*` }],
     };
   },
