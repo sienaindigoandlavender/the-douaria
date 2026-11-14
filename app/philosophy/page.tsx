@@ -1,81 +1,72 @@
 import type { Metadata } from "next";
-import PageHead, { NextPage } from "@/components/PageHead";
+import Link from "next/link";
+import HouseHero from "@/components/house/HouseHero";
 
 export const metadata: Metadata = {
   title: "Philosophy",
   description: "Dyafa, the old Moroccan way of receiving a guest: you are not a customer here. A whole house in the Marrakech Medina, kept for rest, good food and quiet.",
 };
 
-const CARE = [
-  { what: "Rest", line: "Dark rooms, thick walls, a door that closes on the city. The night is for sleeping, and the house is kept that way." },
-  { what: "Food", line: "Warm bread, fruit from the season, olive oil, honey. Breakfast on the roof, where the morning light lands first." },
-  { what: "Quiet", line: "No music piped in. Birds on the roof, the call to prayer at dusk. You hear your own thoughts again." },
-];
-
+// Same structure as the riad's philosophy page (hero, big intro, straw, tadelakt, night, closing quote), the
+// Douaria's own words (Jacqueline, 14 Nov 2026: "the Douaria site does not have the same soul").
 export default function PhilosophyPage() {
   return (
-    <>
-      <PageHead
-        kicker="Philosophy"
-        title={<>You are not a customer here. <em>You are a guest.</em></>}
-        line="Dyafa is the old Moroccan word for receiving someone under your roof. It still runs this house."
-        photo="/photos/detail-niche.webp"
+    <div className="bg-limewash text-ink min-h-screen">
+      <HouseHero
+        title="Philosophy"
+        lede="Dyafa is the old Moroccan word for receiving someone under your roof. It still runs this house."
+        image="/photos/detail-niche.webp"
         alt="A niche in the plaster wall at No. 35"
       />
 
-      {/* What dyafa means */}
-      <section className="bg-plaster">
-        <div className="mx-auto grid max-w-[1400px] gap-12 px-4 py-24 md:grid-cols-12 md:px-10 md:py-40">
-          <p className="kicker uppercase md:col-span-3">Dyafa</p>
-          <div className="md:col-span-9">
-            <p className="font-display text-[30px] leading-[1.2] md:text-[46px]">
-              In the caravan towns, a traveller who knocked was taken in for three days, fed and sheltered, no questions asked. <em>The guest was protected, and the house was honoured by having one.</em>
-            </p>
-            <div className="mt-14 grid gap-8 text-[17px] md:grid-cols-2 md:pe-[12%]">
-              <p>
-                That is the spirit of No. 35. Tea when you arrive. Rooms made ready by hand. Zahra, who knows the house and the lanes around it, and who looks after you as she would look after family.
-              </p>
-              <p>
-                Dyafa runs both ways. We receive you with care, and we ask the same care for the house: its neighbours, its quiet, its old walls. That is why the house rules are few and firm.
-              </p>
-            </div>
-          </div>
+      <section className="px-5 md:px-10 lg:px-14 py-24 md:py-40">
+        <p className="house mx-auto max-w-[1500px] font-light text-[clamp(1.9rem,4.2vw,4rem)] leading-[1.12] tracking-[-0.025em] [text-wrap:pretty] md:pr-[12%]">
+          You are not a customer here. <em>You are a guest.</em> Tea when you arrive, rooms made ready by hand, and Zahra, who knows the house and the lanes around it and looks after you as she would look after family.
+        </p>
+        <img src="/drawings/jams.svg" alt="" aria-hidden draggable={false} className="block mx-auto md:me-0 md:ms-auto max-w-[1500px] w-full md:w-[60%] mt-16 md:mt-24 select-none" />
+      </section>
+
+      <section className="bg-straw px-5 md:px-10 lg:px-14 py-24 md:py-36">
+        <div className="mx-auto max-w-[1500px] grid md:grid-cols-12 gap-10">
+          <p className="house italic font-light md:col-span-5 text-[clamp(1.6rem,2.8vw,2.6rem)] leading-[1.15] text-bejmat">
+            Rest, food, quiet. That is what we look after.
+          </p>
+          <p className="md:col-span-6 md:col-start-7 text-[1.2rem] md:text-[1.3rem] leading-[1.75] text-ink">
+            Dark rooms, thick walls, a door that closes on the city: the night is for sleeping, and the house is kept that way. Warm bread, fruit from the season, olive oil and honey, breakfast on the roof where the morning light lands first. No music piped in; birds, and the call to prayer at dusk, so that you hear your own thoughts again.
+          </p>
         </div>
       </section>
 
-      {/* What we take care of */}
-      <section className="bg-lime">
-        <div className="mx-auto max-w-[1400px] px-4 py-24 md:px-10 md:py-36">
-          <p className="kicker uppercase">What we look after</p>
-          <ol className="mt-12 grid gap-10 md:mt-24 md:grid-cols-3 md:gap-8">
-            {CARE.map((c) => (
-              <li key={c.what} className="border-t border-ink pt-5">
-                <p className="font-display text-[30px] leading-none md:text-[34px]">
-                  <em>{c.what}</em>
-                </p>
-                <p className="mt-4 text-[17px]">{c.line}</p>
-              </li>
-            ))}
-          </ol>
+      <section className="bg-tadelakt px-5 md:px-10 lg:px-14 py-24 md:py-36">
+        <p className="house mx-auto max-w-[1500px] font-light text-[clamp(1.6rem,3vw,2.8rem)] leading-[1.2] tracking-[-0.02em] md:pl-[20%]">
+          A Medina house was built to turn its back on the street and its face to the sky. <em>Thick walls hold the cool of the night into the afternoon; the roof catches the first light and the last.</em> Plaster a little uneven, wool that has been walked on, a painting that was never meant to match the cushions. Nothing here is perfect, and nothing is pretending.
+        </p>
+      </section>
+
+      <section className="night bg-night text-limewash mt-24 md:mt-36 px-5 md:px-10 lg:px-14 py-28 md:py-44">
+        <div className="mx-auto max-w-[1500px] grid md:grid-cols-12 gap-12">
+          <h2 className="house md:col-span-5 font-light text-[clamp(2.2rem,4.8vw,4.6rem)] leading-[1.02] tracking-[-0.03em]">
+            The origin of dyafa
+          </h2>
+          <p className="md:col-span-6 md:col-start-7 house italic font-light text-[1.3rem] md:text-[1.5rem] leading-[1.6] text-limewash">
+            In the caravan towns, a traveller who knocked was taken in for three days, fed and sheltered, no questions asked. The guest was protected, and the house was honoured by having one.
+          </p>
         </div>
       </section>
 
-      {/* The old house */}
-      <section className="bg-plaster">
-        <div className="mx-auto grid max-w-[1400px] gap-12 px-4 py-24 md:grid-cols-12 md:px-10 md:py-36">
-          <p className="kicker uppercase md:col-span-3">The old house</p>
-          <div className="md:col-span-9">
-            <p className="max-w-3xl font-display text-[26px] leading-[1.25] md:text-[36px]">
-              A Medina house was built to turn its back on the street and its face to the sky. <em>Thick walls hold the cool of the night into the afternoon; the roof catches the first light and the last.</em>
-            </p>
-            <p className="mt-10 max-w-2xl text-[17px]">
-              We keep what the house was built to do, and take away what gets in its way. Plaster that is a little uneven, wool that has been walked on, a painting that was never meant to match the cushions. Nothing here is perfect, and nothing is pretending.
-            </p>
-          </div>
+      <section className="bg-night">
+        <div className="bg-limewash px-5 md:px-10 lg:px-14 py-28 md:py-44">
+          <figure className="mx-auto max-w-[1500px]">
+            <blockquote className="house italic font-light text-[clamp(2rem,4.4vw,4.2rem)] leading-[1.08] tracking-[-0.025em] max-w-[22ch]">
+              Dyafa runs both ways.
+            </blockquote>
+            <figcaption className="mt-8 text-lg text-ink">
+              We receive you with care, and we ask the same care for the house: its neighbours, its quiet, its old walls. That is why the house rules are few and firm.
+            </figcaption>
+            <Link href="/the-house" className="btn-door mt-10 inline-block">The house, room by room</Link>
+          </figure>
         </div>
       </section>
-
-      <NextPage href="/the-house" kicker="Next" title={<>The house, <em>room by room</em></>} />
-    </>
+    </div>
   );
 }
