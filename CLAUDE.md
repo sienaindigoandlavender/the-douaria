@@ -17,3 +17,4 @@ Jacqueline's house at 35 Derb Fhal Zefriti (owned by her). Its own site, not lin
 - No visible scrollbars.
 - No decorative 01/02/03 numbering: numbers only where order is real (steps, days, ranked lists). Jacqueline, 9 Nov 2026.
 - Photos can't be saved (`PhotoGuard`); no pins until a /pin-image route exists.
+- ii.riaddisiena.com = this project (Jacqueline, 14 Nov 2026): Booking.com guests' pages (/welcome, /arrival, /keys, /the-riad/*, /the-douaria/*) and the APIs they call are proxied from indigoandlavender.love via `rewrites` in `next.config.js` (beforeFiles; /drawings falls back to it). Its assetPrefix `/il-static` keeps its /_next files apart. noindex comes from the neutral site.
