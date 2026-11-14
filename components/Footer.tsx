@@ -8,7 +8,7 @@ export default function Footer() {
     <footer className="text-ink">
       <div className="bg-[#e8e0d4]">
         <div className="max-w-7xl mx-auto px-6 py-10">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-8">
             <div className="col-span-2 md:col-span-2">
               <span className="flex flex-col items-start leading-tight mb-3">
                 <span className="text-sm tracking-[0.3em] font-light">THE</span>
@@ -26,6 +26,11 @@ export default function Footer() {
                 <li><Link href="/philosophy" className={link}>Philosophy</Link></li>
                 <li><Link href="/rooms" className={link}>Rooms</Link></li>
                 <li><Link href="/amenities" className={link}>Amenities</Link></li>
+              </ul>
+            </div>
+            <div>
+              <span className="text-xs tracking-widest mb-4 block">EXPERIENCE</span>
+              <ul className="space-y-1.5">
                 <li><Link href="/the-medina" className={link}>The Medina</Link></li>
                 <li><Link href="/dinners" className={link}>Dinners</Link></li>
                 <li><Link href="/sahara" className={link}>The Sahara</Link></li>
