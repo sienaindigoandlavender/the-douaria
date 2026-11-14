@@ -6,6 +6,17 @@ module.exports = {
   async headers() {
     return [{ source: "/listing/:path*", headers: [{ key: "Access-Control-Allow-Origin", value: "*" }, { key: "X-Robots-Tag", value: "noindex" }] }, { source: "/news/:path*", headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow" }] }, { source: "/news", headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow" }] }];
   },
+  // Booking.com guests' pages (14 Nov 2026): welcome, arrival, keys, directions, transfer and the APIs they call are
+  // served from indigoandlavender.love through this domain (ii.riaddisiena.com), noindex.
+  async rewrites() {
+    const IL = "https://www.indigoandlavender.love";
+    const paths = ["/welcome", "/arrival", "/keys", "/the-riad/:path+", "/the-douaria/:path+", "/il-static/:path*",
+      "/api/arrival", "/api/passport", "/api/tax", "/api/tax/:path*", "/api/transfer", "/api/img", "/api/enter", "/api/sheets/:path*"];
+    return {
+      beforeFiles: paths.map((source) => ({ source, destination: `${IL}${source}` })),
+      fallback: [{ source: "/drawings/:path*", destination: `${IL}/drawings/:path*` }],
+    };
+  },
   async redirects() {
     return [
       { source: "/stay", destination: "/rooms", permanent: false },
