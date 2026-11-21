@@ -30,7 +30,7 @@ export const STAYS: Stay[] = [
       "Close the door at No. 35 and the Medina is on the other side of it. Mornings start slowly, with breakfast on the roof terrace if you've asked for it. Afternoons, someone comes back from the souks with the carpet they swore they wouldn't buy. Evenings, you walk to the square for the smoke and the drums, and walk home to quiet.",
       "For two couples and a friend, a family with older children, or friends who want to travel together and still each have a door to close.",
     ],
-    facts: ["Up to 6 guests", "Two king beds (Love, Bliss) and a queen (Joy)", "Three large bedrooms, 30–35 m² each", "Love, Joy and Bliss, each with its own bathroom", "Roof terrace", "Breakfast on the roof terrace and home-cooked dinners, on request", "Children from 8 years"],
+    facts: ["Up to 6 guests", "A king bed (Love) and two queens (Bliss, Joy)", "Three large bedrooms, 30–35 m² each", "Love, Joy and Bliss, each with its own bathroom", "Roof terrace", "Breakfast on the roof terrace and home-cooked dinners, on request", "Children from 8 years"],
     maxGuests: 6,
   },
   {
@@ -75,7 +75,7 @@ export const STAYS: Stay[] = [
       "Bliss is the long room: painted beams overhead, a pierced brass lantern that throws its pattern on the ceiling at night, and a wide bed under a grey wool blanket with a long hand-knotted fringe.",
       "Above the bed hangs the house's most talked-about painting, a figure wrapped in cobalt blue. You will either love it or ask to sleep facing the other way.",
     ],
-    facts: ["2 guests", "King bed, 160 cm", "A large room, 30–35 m²", "First floor, up a steep stair", "Bathroom inside the room", "Air conditioning that also heats", "Breakfast on request"],
+    facts: ["2 guests", "Queen bed, 160 cm", "A large room, 30–35 m²", "First floor, up a steep stair", "Bathroom inside the room", "Air conditioning that also heats", "Breakfast on request"],
     maxGuests: 2,
   },
 ];
