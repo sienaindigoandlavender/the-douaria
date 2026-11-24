@@ -20,6 +20,9 @@ module.exports = {
   },
   async redirects() {
     return [
+      // ii.riaddisiena.com is retired (Jacqueline, 24 Nov 2026): every path, query included, goes to riaddisiena.com,
+      // which serves Booking.com guests' pages again.
+      { source: "/:path*", has: [{ type: "host", value: "ii.riaddisiena.com" }], destination: "https://www.riaddisiena.com/:path*", permanent: true },
       { source: "/stay", destination: "/rooms", permanent: false },
       // Old riaddisiena.com paths someone might type on ii.riaddisiena.com land on the Douaria's own pages.
       { source: "/the-douaria", destination: "/", permanent: false },

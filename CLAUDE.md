@@ -21,3 +21,4 @@ Jacqueline's house at 35 Derb Fhal Zefriti (owned by her). Its own site, not lin
 - Footer and menu (Jacqueline, 14 Nov 2026): STAY, EXPERIENCE (ends with Morocco → slowmorocco.com, also in the top menu), LEARN (Derb.so, Darija.io, Amazigh.online, Tsawer), GOOD TO KNOW. The ii footer in indigo-and-lavender (`IIFooter`) mirrors it.
 
 - Voice (Jacqueline, 23 Nov 2026): light, never pompous. No educating, no lecturing, no sermons. House rule for every site.
+- ii.riaddisiena.com retired (Jacqueline, 24 Nov 2026): every request on that host redirects (308) to the same path on www.riaddisiena.com, which serves Booking.com guests' pages again. The rewrites below it no longer run for that host.
