@@ -3,6 +3,9 @@ import { getServiceClient } from "@/lib/supabase";
 import { fetchAndParseIcal, BookedRange } from "@/lib/ical";
 import { expireHolds } from "@/lib/booking";
 
+// Never serve cached database reads from an API route (28 Nov 2026: a cached read silently stopped the riad's transfer messages).
+export const fetchCache = "force-no-store";
+
 // The Douaria is sold four ways (Jacqueline, 28 Oct 2026): the whole house, or Bliss, Joy, Love
 // on their own. A whole-house stay blocks every room; a room stay blocks the whole house.
 const DOUARIA_WHOLE_HOUSE = "The Douaria — whole house";
