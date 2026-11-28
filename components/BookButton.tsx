@@ -4,8 +4,8 @@ import BookingModal from "@/components/BookingModal";
 
 // Opens the house booking modal (dates from every channel, server-priced, PayPal).
 export default function BookButton({
-  id, name, price, maxGuests, cityTax, label = "Check dates", className = "",
-}: { id: string; name: string; price: number; maxGuests: number; cityTax: number; label?: string; className?: string }) {
+  id, name, price, maxGuests, cityTax, seasons, label = "Check dates", className = "",
+}: { id: string; name: string; price: number; maxGuests: number; cityTax: number; seasons?: { from: string; to: string; price: number }[]; label?: string; className?: string }) {
   const [open, setOpen] = useState(false);
   const clientId = process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID || "AWVf28iPmlVmaEyibiwkOtdXAl5UPqL9i8ee9yStaG6qb7hCwNRB2G95SYwbcikLnBox6CGyO-boyAvu";
   return (
@@ -16,7 +16,7 @@ export default function BookButton({
       <BookingModal
         isOpen={open}
         onClose={() => setOpen(false)}
-        item={{ id, name, priceEUR: String(price) }}
+        item={{ id, name, priceEUR: String(price), seasons }}
         config={{
           maxGuestsPerUnit: maxGuests,
           baseGuestsPerUnit: maxGuests,

@@ -31,6 +31,8 @@ export interface BookingItem {
   id: string;
   name: string;
   priceEUR: string;
+  /** Seasonal nightly prices (the whole house): a night inside a season costs its price, others priceEUR. */
+  seasons?: { from: string; to: string; price: number }[];
   iCalURL?: string;
   iCalURLAirbnb?: string;
 }
@@ -426,9 +428,21 @@ function BookingModalContent({
   
   // Per-person pricing mode (for journeys): price × guests
   // Standard mode (for rooms): price × nights × units + extras
+  const seasons = item.seasons || [];
+  const nightPrices: number[] = (() => {
+    if (!seasons.length || !(selectCheckout && checkIn && checkOut)) return [];
+    const out: number[] = [];
+    for (let d = new Date(`${checkIn}T12:00:00Z`); d.toISOString().slice(0, 10) < checkOut; d.setUTCDate(d.getUTCDate() + 1)) {
+      const day = d.toISOString().slice(0, 10);
+      out.push(seasons.find((x) => x.from <= day && day <= x.to)?.price ?? pricePerNight);
+    }
+    return out;
+  })();
+  const seasonal = nightPrices.length > 0 && nightPrices.some((p) => p !== pricePerNight);
   const subtotal = isPerPersonPricing 
     ? pricePerNight * guests 
-    : pricePerNight * calculatedNights * units;
+    : nightPrices.length ? nightPrices.reduce((a, b) => a + b, 0) * units : pricePerNight * calculatedNights * units;
+  const fromPrice = Math.min(pricePerNight, ...seasons.map((x) => x.price));
   const extraGuests = isPerPersonPricing ? 0 : Math.max(0, guests - baseGuests);
   const extraGuestsCost = extraGuests * extraPersonFee * calculatedNights;
   const cityTax = (hasCityTax && !isPerPersonPricing) ? cityTaxPerNight * guests * calculatedNights : 0;
@@ -611,7 +625,7 @@ function BookingModalContent({
           <div className="mb-8">
             <h2 className="font-serif text-2xl text-foreground mb-1">{item.name}</h2>
             {maxNights > 1 || hasCityTax || maxGuestsPerUnit > baseGuestsPerUnit ? (
-              <p className="text-sm text-foreground">{formatPrice(pricePerNight)} per night</p>
+              <p className="text-sm text-foreground">{seasons.length && fromPrice < pricePerNight ? `From ${formatPrice(fromPrice)} per night` : `${formatPrice(pricePerNight)} per night`}</p>
             ) : (
               <p className="text-sm text-foreground">{formatPrice(pricePerNight)}</p>
             )}
@@ -731,7 +745,9 @@ function BookingModalContent({
                         <span className="text-foreground">
                           {isPerPersonPricing 
                             ? `${formatPrice(pricePerNight)} × ${guests} guest${guests > 1 ? "s" : ""}`
-                            : `${formatPrice(pricePerNight)} × ${calculatedNights} night${calculatedNights > 1 ? "s" : ""}${units > 1 ? ` × ${units} ${unitLabel}s` : ""}`
+                            : seasonal
+                            ? `${calculatedNights} night${calculatedNights > 1 ? "s" : ""} (seasonal prices)`
+                            : `${formatPrice(nightPrices[0] ?? pricePerNight)} × ${calculatedNights} night${calculatedNights > 1 ? "s" : ""}${units > 1 ? ` × ${units} ${unitLabel}s` : ""}`
                           }
                         </span>
                         <span className="text-foreground">{formatPrice(subtotal)}</span>

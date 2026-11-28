@@ -21,6 +21,15 @@ export interface HouseTerms {
   /** Discount codes, checked on the server only; never sent to the public settings feed.
    *  Room nights only (not dinner, transfers, city tax, extras), not stackable (Jacqueline, 1 Nov 2026). */
   codes: DiscountCode[];
+  /** Seasonal prices for the whole Douaria (Jacqueline, 28 Nov 2026: never below its three rooms plus €50 a night,
+   *  in step with Booking). A night inside a season costs the season's price; any other night douaria.house. */
+  houseSeasons: HouseSeason[];
+}
+
+export interface HouseSeason {
+  from: string; // YYYY-MM-DD, first night
+  to: string; // YYYY-MM-DD, last night (inclusive)
+  price: number; // € a night
 }
 
 export interface DiscountCode {
@@ -42,7 +51,39 @@ export const DEFAULTS: HouseTerms = {
   transferMad: 200,
   cityTaxMad: 27.5,
   codes: [{ code: "SIENA25", percent: 25, active: true, note: "Return-guest card" }],
+  houseSeasons: [],
 };
+
+const YMD = /^\d{4}-\d{2}-\d{2}$/;
+function mergeSeasons(v: unknown): HouseSeason[] {
+  if (!Array.isArray(v)) return [];
+  return v
+    .map((x) => ({ from: String(x?.from || ""), to: String(x?.to || ""), price: Number(x?.price) }))
+    .filter((x) => YMD.test(x.from) && YMD.test(x.to) && x.from <= x.to && isFinite(x.price) && x.price > 0)
+    .sort((a, b) => a.from.localeCompare(b.from));
+}
+
+/** The whole house's price for one night (YYYY-MM-DD). */
+export function housePriceOn(t: HouseTerms, night: string): number {
+  const s = t.houseSeasons.find((x) => x.from <= night && night <= x.to);
+  return s ? s.price : t.douaria.house;
+}
+
+/** Sum of the nights from check-in (inclusive) to check-out (exclusive) for a stay id; null if unknown. */
+export function stayTotal(t: HouseTerms, itemId: unknown, checkIn: string, checkOut: string): number | null {
+  const id = String(itemId || "");
+  if (id !== "douaria-house") {
+    const p = roomNightPrice(t, id);
+    if (p == null) return null;
+    const n = Math.round((Date.parse(checkOut) - Date.parse(checkIn)) / 86_400_000);
+    return p * n;
+  }
+  let sum = 0;
+  for (let d = new Date(`${checkIn}T12:00:00Z`); d.toISOString().slice(0, 10) < checkOut; d.setUTCDate(d.getUTCDate() + 1)) {
+    sum += housePriceOn(t, d.toISOString().slice(0, 10));
+  }
+  return sum;
+}
 
 /** "  siena25 " → "SIENA25". */
 export const normCode = (v: unknown) => String(v ?? "").trim().toUpperCase().replace(/[^A-Z0-9-]/g, "").slice(0, 30);
@@ -88,6 +129,7 @@ export function mergeTerms(raw: unknown): HouseTerms {
     rooms: pick(DEFAULTS.rooms, r.rooms),
     douaria: pick(DEFAULTS.douaria, r.douaria),
     codes: mergeCodes(r.codes),
+    houseSeasons: mergeSeasons(r.houseSeasons),
   };
 }
 

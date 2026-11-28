@@ -12,7 +12,7 @@ import { getServiceClient } from "@/lib/supabase";
 import { sendBookingEmails } from "@/lib/email";
 import type { CaptureInfo } from "@/lib/paypal";
 import { countryFromPhone } from "@/lib/countryFromPhone";
-import { getHouseTerms, findCode, roomNightPrice } from "@/lib/houseTerms";
+import { getHouseTerms, findCode, roomNightPrice, stayTotal } from "@/lib/houseTerms";
 import { getSetting } from "@/lib/supabase";
 
 export const HOLD_MINUTES = 60;
@@ -83,7 +83,7 @@ export async function quoteWithCode(b: BookingInput): Promise<CodeQuote | { erro
     const v = parseFloat(String(await getSetting("city_tax_eur")));
     if (isFinite(v) && v >= 0) perNight = v;
   } catch {}
-  const roomTotal = round2(r.price * nights);
+  const roomTotal = round2(stayTotal(await getHouseTerms(), b.itemId, b.checkIn, b.checkOut) ?? r.price * nights); // seasons for the whole house
   const discount = round2((roomTotal * r.percent) / 100);
   const cityTax = round2(perNight * guests * nights);
   return { code: r.code, percent: r.percent, label: r.label, roomTotal, discount, cityTax, total: round2(roomTotal - discount + cityTax), nights };
@@ -105,7 +105,8 @@ export async function quotePlain(b: BookingInput): Promise<{ total: number; nigh
     const v = parseFloat(String(await getSetting("city_tax_eur")));
     if (isFinite(v) && v >= 0) perNight = v;
   } catch {}
-  return { total: round2(price * nights + perNight * guests * nights), nights };
+  const stay = stayTotal(terms, b.itemId, b.checkIn, b.checkOut) ?? price * nights; // seasons for the whole house
+  return { total: round2(stay + perNight * guests * nights), nights };
 }
 
 /** The line ops shows in the booking's notes; also read back for the emails if the columns are missing. */

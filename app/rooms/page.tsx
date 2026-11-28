@@ -29,7 +29,8 @@ const icon = (f: string) => {
   return null;
 };
 
-function Room({ s, price = 0, tax = 0 }: { s: Stay; price?: number; tax?: number }) {
+function Room({ s, price = 0, tax = 0, seasons = [] }: { s: Stay; price?: number; tax?: number; seasons?: { from: string; to: string; price: number }[] }) {
+  const from = Math.min(price, ...seasons.map((x) => x.price));
   const house = s.id === "douaria-house";
   return (
     <article id={s.slug} className="pb-24 md:pb-40 scroll-mt-24">
@@ -56,7 +57,7 @@ function Room({ s, price = 0, tax = 0 }: { s: Stay; price?: number; tax?: number
             <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-4">
               <p className="mb-0">
                 <span className="text-ink text-base">From </span>
-                <span className="house font-light text-[1.9rem] leading-none">€{Math.round(price)}</span>
+                <span className="house font-light text-[1.9rem] leading-none">€{Math.round(from)}</span>
                 <span className="text-ink text-base"> a night</span>
               </p>
               <BookButton
@@ -65,6 +66,7 @@ function Room({ s, price = 0, tax = 0 }: { s: Stay; price?: number; tax?: number
                 price={price}
                 maxGuests={s.maxGuests}
                 cityTax={tax}
+                seasons={seasons}
                 label="Reserve the whole house"
                 className="btn-door"
               />
@@ -121,7 +123,7 @@ export default async function RoomsPage() {
             nobody but your own people.
           </p>
         </div>
-        <Room s={house} price={stayPrice(terms, house)} tax={tax} />
+        <Room s={house} price={stayPrice(terms, house)} tax={tax} seasons={terms.houseSeasons.filter((x) => x.to >= new Date().toISOString().slice(0, 10))} />
       </section>
 
       <div className="px-6 pb-4 pt-16">
